@@ -1,9 +1,9 @@
 import { shorthands } from '@tamagui/shorthands'
 import { createMedia } from '@tamagui/react-native-media-driver'
-import { createTamagui } from 'tamagui'
-import { themes, tokens } from '@tamagui/themes'
 import { createInterFont } from '@tamagui/font-inter'
 import { createAnimations } from '@tamagui/animations-react-native'
+import { radius, size, space, zIndex } from '@tamagui/themes'
+import { createTamagui, createTheme, createTokens } from 'tamagui'
 
 const animations = createAnimations({
   bouncy: {
@@ -25,6 +25,27 @@ const animations = createAnimations({
   },
 })
 
+const tokens = createTokens({
+  size,
+  space,
+  zIndex,
+  radius,
+  color: {
+    '50': '#FAFAFA',
+    '800': '#282828',
+    '900': '#111D01',
+
+    'yellow400': '#FFFD01',
+  },
+})
+
+const dark = createTheme({
+  dark0: tokens.color['50'],
+  dark8: tokens.color['800'],
+  dark9: tokens.color['900'],
+  darkYellow4: tokens.color.yellow400,
+})
+
 const bodyFont = createInterFont()
 const headingFont = createInterFont()
 
@@ -35,10 +56,12 @@ const config = createTamagui({
   themeClassNameOnRoot: false,
   shorthands,
   fonts: {
-    heading: headingFont,
     body: bodyFont,
+    heading: headingFont,
   },
-  themes,
+  themes: {
+    dark,
+  },
   tokens,
   media: createMedia({
     xs: { maxWidth: 660 },
