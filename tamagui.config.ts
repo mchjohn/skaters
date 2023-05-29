@@ -33,7 +33,7 @@ const tokens = createTokens({
   color: {
     '50': '#FAFAFA',
     '800': '#282828',
-    '900': '#111D01',
+    '900': '#1A1A1A',
 
     'yellow400': '#FFFD01',
   },
