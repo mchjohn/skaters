@@ -1,5 +1,6 @@
+import { Button, View } from 'react-native'
+import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { YStack, Text, Button } from 'tamagui'
 
 import { NavigationProps } from '../../../@types/routes'
 
@@ -11,9 +12,10 @@ export function Home() {
   }
 
   return (
-    <YStack p={'$3.5'} flex={1} bg='$dark9'>
-      <Text color="$dark0">Home</Text>
-      <Button color='$dark0' onPress={handleGoToProfile}>Go to Profile</Button>
-    </YStack>
+    <View >
+      <Text>Home</Text>
+
+      <Button title='Go to Profile' onPress={handleGoToProfile} />
+    </View>
   )
 }

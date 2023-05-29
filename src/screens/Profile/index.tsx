@@ -1,9 +1,10 @@
-import { Stack, Text } from 'tamagui'
+import { View } from 'react-native'
+import { Text } from 'react-native'
 
 export function Profile() {
   return (
-    <Stack margin={10}>
-      <Text color="$color">Profile</Text>
-    </Stack>
+    <View >
+      <Text>Profile</Text>
+    </View>
   )
 }
