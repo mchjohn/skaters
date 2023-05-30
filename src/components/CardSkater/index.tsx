@@ -2,9 +2,17 @@ import { useTheme } from 'styled-components'
 
 import * as S from './styles'
 
-const uri= 'https://b6f4196fd8.cbaul-cdnwnd.com/497c46086f60a827fa51f31e6cb37c5b/200000006-cd5d4cf4ff/i%20%281%29.png?ph=b6f4196fd8'
+type Props = {
+  data: {
+    name: string;
+    country: string;
+    state: string;
+    level: string;
+    avatar: string;
+  }
+}
 
-export function CardSkater() {
+export function CardSkater({ data }: Props) {
   const { colors } = useTheme()
 
   return (
@@ -17,13 +25,13 @@ export function CardSkater() {
       >
         <S.Avatar
           source={{
-            uri,
+            uri: data.avatar,
           }}
         />
 
         <S.Info>
-          <S.Title>Gabriela Mazetto</S.Title>
-          <S.Text>Profissional - Brasil, SP</S.Text>
+          <S.Title>{data.name}</S.Title>
+          <S.Text>{data.level} - {data.country}, {data.state}</S.Text>
           <S.Link>Ver mais...</S.Link>
         </S.Info>
       </S.Button>

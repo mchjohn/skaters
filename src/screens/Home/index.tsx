@@ -1,5 +1,7 @@
+import { FlashList } from '@shopify/flash-list'
 import { useNavigation } from '@react-navigation/native'
 
+import { DATA } from '../../utils/FAKE_DATA'
 import { NavigationProps } from '../../../@types/routes'
 
 import * as S from './styles'
@@ -23,7 +25,14 @@ export function Home() {
         <SearchButton />
       </S.Header>
 
-      <CardSkater />
+      <FlashList
+        data={DATA}
+        renderItem={({ item }) => <CardSkater data={item} />}
+        estimatedItemSize={114}
+        ItemSeparatorComponent={() => <S.Separator />}
+        ListHeaderComponentStyle={{ marginTop: 16 }}
+        showsVerticalScrollIndicator={false}
+      />
     </S.View>
   )
 }

@@ -6,6 +6,10 @@ export const View = styled.View`
   background-color: ${props => props.theme.colors.gray9}
 `
 
+export const Separator = styled.View`
+  height: 8px
+`
+
 export const Header = styled.View`
   width: 100%
   align-items: center
