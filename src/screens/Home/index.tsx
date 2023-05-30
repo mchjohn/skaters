@@ -4,8 +4,9 @@ import { NavigationProps } from '../../../@types/routes'
 
 import * as S from './styles'
 
-import { SearchButton } from '../../components/Search'
 import { Filter } from '../../components/Filter'
+import { CardSkater } from '../../components/CardSkater'
+import { SearchButton } from '../../components/Search'
 
 export function Home() {
   const navigation = useNavigation<NavigationProps>()
@@ -18,8 +19,11 @@ export function Home() {
     <S.View>
       <S.Header>
         <Filter />
+
         <SearchButton />
       </S.Header>
+
+      <CardSkater />
     </S.View>
   )
 }
