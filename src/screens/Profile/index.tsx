@@ -9,10 +9,16 @@ import { DATA } from '../../utils/FAKE_DATA'
 import { Info } from './Info'
 import { ISkater } from '../../interfaces/skater'
 import { RouteProps } from '../../../@types/routes'
+import { FavoriteButton } from '../../components/FavoriteButton'
 
 export function Profile() {
   const route = useRoute<RouteProps>()
   const [skater, setSkater] = useState({} as ISkater)
+  const [isFavorite, setIsFavorite] = useState(false)
+
+  function handleToggleFavorite() {
+    setIsFavorite(prev => !prev)
+  }
 
   useEffect(() => {
     if (route.params?.userId) {
@@ -25,11 +31,16 @@ export function Profile() {
       <GoBackButton />
 
       <S.Card>
-        <S.Avatar
-          source={{
-            uri: skater.avatar,
-          }}
-        />
+        <S.WrapperAvatar>
+          <S.Avatar
+            source={{
+              uri: skater.avatar,
+            }}
+          />
+
+          <FavoriteButton isFavorite={isFavorite} handleToggleFavorite={handleToggleFavorite} />
+        </S.WrapperAvatar>
+
 
         <S.Title>{skater.name}</S.Title>
 

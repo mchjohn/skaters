@@ -13,10 +13,13 @@ export const Card = styled.View`
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray8}
 `
+export const WrapperAvatar = styled.View`
+  height: 50%
+`
 
 export const Avatar = styled.Image`
   width: ${props => props.theme.size.full}
-  height: 50%
+  height: ${props => props.theme.size.full}
   borderRadius: ${props => props.theme.radii.md}px
 `
 
