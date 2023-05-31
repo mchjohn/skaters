@@ -5,7 +5,7 @@ export type RootStackParamList = {
   Profile: { userId: string };
 };
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Home', 'Profile'>;
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Home' | 'Profile'>;
 
 export type RouteProps = ScreenProps['route'];
 export type NavigationProps = ScreenProps['navigation'];

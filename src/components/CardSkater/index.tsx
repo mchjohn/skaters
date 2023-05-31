@@ -1,19 +1,22 @@
 import { useTheme } from 'styled-components'
+import { useNavigation } from '@react-navigation/native'
 
 import * as S from './styles'
 
+import { ISkater } from '../../interfaces/skater'
+import { NavigationProps } from '../../../@types/routes'
+
 type Props = {
-  data: {
-    name: string;
-    country: string;
-    state: string;
-    level: string;
-    avatar: string;
-  }
+  data: ISkater
 }
 
 export function CardSkater({ data }: Props) {
   const { colors } = useTheme()
+  const navigation = useNavigation<NavigationProps>()
+
+  function handleGoToProfile(id: string) {
+    navigation.navigate('Profile', { userId: id })
+  }
 
   return (
     <S.WrapperButton>
@@ -22,6 +25,7 @@ export function CardSkater({ data }: Props) {
           color: colors.yellow4,
           foreground: true,
         }}
+        onPress={() => handleGoToProfile(data.id)}
       >
         <S.Avatar
           source={{
@@ -31,7 +35,7 @@ export function CardSkater({ data }: Props) {
 
         <S.Info>
           <S.Title>{data.name}</S.Title>
-          <S.Text>{data.level} - {data.country}, {data.state}</S.Text>
+          <S.Text>{data.level} - {data.country}, {data.state.uf}</S.Text>
           <S.Link>Ver mais...</S.Link>
         </S.Info>
       </S.Button>

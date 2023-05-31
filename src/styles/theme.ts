@@ -11,6 +11,7 @@ const Theme = {
     sm: 8,
     md: 16,
     lg: 18,
+    xl: 40,
   },
   size: {
     sm: 48,
