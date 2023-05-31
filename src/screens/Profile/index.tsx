@@ -1,30 +1,14 @@
-import { useRoute } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
-
 import * as S from './styles'
 
 import { GoBackButton } from '../../components/GoBackButton'
-
-import { DATA } from '../../utils/FAKE_DATA'
-import { Info } from './Info'
-import { ISkater } from '../../interfaces/skater'
-import { RouteProps } from '../../../@types/routes'
 import { FavoriteButton } from '../../components/FavoriteButton'
 
+import { Info } from './Info'
+
+import { useProfile } from './useProfile'
+
 export function Profile() {
-  const route = useRoute<RouteProps>()
-  const [skater, setSkater] = useState({} as ISkater)
-  const [isFavorite, setIsFavorite] = useState(false)
-
-  function handleToggleFavorite() {
-    setIsFavorite(prev => !prev)
-  }
-
-  useEffect(() => {
-    if (route.params?.userId) {
-      setSkater(DATA[Number(route.params.userId)])
-    }
-  }, [])
+  const { skater, isFavorite, handleToggleFavorite } = useProfile()
 
   return (
     <S.View>
