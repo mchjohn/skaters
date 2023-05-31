@@ -12,7 +12,3 @@ export const Button = styled.Pressable`
   borderColor: ${props => props.theme.colors.gray8}
   borderRadius: ${props => props.theme.radii.full}px
 `
-
-export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-`

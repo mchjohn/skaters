@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react'
 
 import * as S from './styles'
 
+import { GoBackButton } from '../../components/GoBackButton'
+
 import { DATA } from '../../utils/FAKE_DATA'
+import { Info } from './Info'
 import { ISkater } from '../../interfaces/skater'
 import { RouteProps } from '../../../@types/routes'
-import { Info } from './Info'
 
 export function Profile() {
   const route = useRoute<RouteProps>()
@@ -20,6 +22,8 @@ export function Profile() {
 
   return (
     <S.View>
+      <GoBackButton />
+
       <S.Card>
         <S.Avatar
           source={{
@@ -34,7 +38,7 @@ export function Profile() {
           <Info label='Idade:' value={` ${skater.age}`} />
           <Info label='Status:' value={` ${skater.level}`} />
           <Info label='Stance:' value={` ${skater.stance}`} />
-          <Info label='Patrocínios:' value={` ${skater.sponsor.join(', ')}`} />
+          <Info label='Patrocínios:' value={` ${skater.sponsor?.join(', ')}`} />
         </S.WrapperInfo>
 
         <S.Link>Última atualização: {skater.updatedAt} - Enviar uma atualização.</S.Link>
