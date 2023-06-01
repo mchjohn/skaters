@@ -4,7 +4,6 @@ import { GoBackButton } from '../../components/GoBackButton'
 import { FavoriteButton } from '../../components/FavoriteButton'
 
 import { Info } from './Info'
-
 import { useProfile } from './useProfile'
 
 export function Profile() {
@@ -18,8 +17,9 @@ export function Profile() {
         <S.WrapperAvatar>
           <S.Avatar
             source={{
-              uri: skater.avatar,
+              uri: skater?.avatar,
             }}
+            alt={`${skater.name} de frente`}
           />
 
           <FavoriteButton isFavorite={isFavorite} handleToggleFavorite={handleToggleFavorite} />

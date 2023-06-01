@@ -13,6 +13,7 @@ export const Card = styled.View`
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray8}
 `
+
 export const WrapperAvatar = styled.View`
   height: 50%
 `
