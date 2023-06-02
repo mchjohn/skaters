@@ -1,14 +1,15 @@
 import { FlashList } from '@shopify/flash-list'
 
-import { DATA } from '../../utils/FAKE_DATA'
-
 import * as S from './styles'
+import { useHome } from './useHome'
 
 import { Filter } from '../../components/Filter'
 import { CardSkater } from '../../components/CardSkater'
 import { SearchButton } from '../../components/Search'
 
 export function Home() {
+  const { skaters, isLoadingSkaters } = useHome()
+
   return (
     <S.View>
       <S.Header>
@@ -18,8 +19,8 @@ export function Home() {
       </S.Header>
 
       <FlashList
-        data={DATA}
-        renderItem={({ item }) => <CardSkater data={item} />}
+        data={skaters}
+        renderItem={({ item }) => <CardSkater data={item} isLoading={isLoadingSkaters} />}
         estimatedItemSize={114}
         ItemSeparatorComponent={() => <S.Separator />}
         ListHeaderComponentStyle={{ marginTop: 16 }}

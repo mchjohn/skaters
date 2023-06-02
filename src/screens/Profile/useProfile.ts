@@ -1,25 +1,25 @@
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { useRoute } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
 
-import { DATA } from '../../utils/FAKE_DATA'
+import * as SkatersServices from '../../services/firebase/SkatersServices'
 
-import { ISkater } from '../../interfaces/skater'
 import { RouteProps } from '../../../@types/routes'
+import { QueryKeys } from '../../constants/QueryKeys'
 
 export function useProfile() {
   const route = useRoute<RouteProps>()
-  const [skater, setSkater] = useState({} as ISkater)
   const [isFavorite, setIsFavorite] = useState(false)
 
   function handleToggleFavorite() {
     setIsFavorite(prev => !prev)
   }
 
-  useEffect(() => {
-    if (route.params?.userId) {
-      setSkater(DATA[Number(route.params.userId)])
-    }
-  }, [])
+  const { data: skater, isLoading: isLoadingSkater } = useQuery(
+    [QueryKeys.SKATER],
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    () => SkatersServices.getSkaterById(route.params!.userId),
+  )
 
-  return { skater, isFavorite, handleToggleFavorite }
+  return { skater, isFavorite, isLoadingSkater, handleToggleFavorite }
 }
