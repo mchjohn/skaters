@@ -17,6 +17,8 @@ import Theme from './src/styles/theme'
 import Route from './src/routes'
 
 import { SafeArea } from './src/components/SafeArea'
+import { AuthProvider } from './src/contexts/AuthContext'
+import { ModalProvider } from './src/contexts/ModalContext'
 
 onlineManager.setEventListener(setOnline => {
   return NetInfo.addEventListener(state => {
@@ -43,10 +45,13 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={Theme}>
         <SafeAreaProvider>
-          <SafeArea>
-            <Route />
-          </SafeArea>
-
+          <AuthProvider>
+            <ModalProvider>
+              <SafeArea>
+                <Route />
+              </SafeArea>
+            </ModalProvider>
+          </AuthProvider>
           <StatusBar style="inverted" />
         </SafeAreaProvider>
       </ThemeProvider>

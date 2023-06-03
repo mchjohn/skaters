@@ -13,12 +13,12 @@ import * as S from './styles'
 
 type Props = {
   isFavorite: boolean;
-  handleToggleFavorite: () => void;
+  onPress: () => void;
 }
 
 const AnimatedHeart = Animated.createAnimatedComponent(Svg)
 
-export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
+export function FavoriteButton({ isFavorite, onPress }: Props) {
   const { colors } = useTheme()
   const svgHeightAnimated = useSharedValue(0)
 
@@ -34,7 +34,7 @@ export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
     }
   })
 
-  function onPress() {
+  function handlePress() {
     svgHeightAnimated.value = 0
 
     svgHeightAnimated.value = withTiming(1, {
@@ -42,11 +42,11 @@ export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
       easing: Easing.ease
     })
 
-    handleToggleFavorite()
+    onPress()
   }
 
   return (
-    <S.Button onPress={onPress}>
+    <S.Button onPress={handlePress}>
       <AnimatedHeart animatedProps={svgProps}>
         <Path
           d={`

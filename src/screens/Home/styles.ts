@@ -18,5 +18,9 @@ export const Header = styled.View`
 `
 
 export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray1}
+  margin-top: ${props => props.theme.spacing.xs}px
+  margin-bottom: ${props => props.theme.spacing.sm}px
+
+  color: ${props => props.theme.colors.yellow4}
+  font-size: ${props => props.theme.fontSize.lg}px
 `

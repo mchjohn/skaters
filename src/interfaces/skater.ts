@@ -14,4 +14,5 @@ export interface ISkater {
   address: Address;
   sponsors: string[];
   updatedAt: string;
+  amountLikes: number;
 }
