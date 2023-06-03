@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AppState, Platform } from 'react-native'
 import type { AppStateStatus } from 'react-native'
+import Toast from 'react-native-toast-message'
 import NetInfo from '@react-native-community/netinfo'
 
 import Theme from './src/styles/theme'
@@ -49,6 +50,8 @@ export default function App() {
             <ModalProvider>
               <SafeArea>
                 <Route />
+
+                <Toast />
               </SafeArea>
             </ModalProvider>
           </AuthProvider>

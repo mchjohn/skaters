@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components'
+import Toast from 'react-native-toast-message'
 
 import * as S from './styles'
 import { useSignUp } from './useSignUp'
@@ -61,7 +62,7 @@ export function SignUp() {
               >
                 {disableSignUpButton ?
                   <S.Text>Preencha todos os campos</S.Text> :
-                  <S.Text>Entrar</S.Text>
+                  <S.Text>Cadastrar</S.Text>
                 }
               </S.Button>
 
@@ -76,6 +77,8 @@ export function SignUp() {
             </S.Form>
           </S.ModalView>
         </S.CenteredView>
+
+        <Toast />
       </S.Modal>
     )
   )

@@ -1,6 +1,8 @@
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 
+import { showToast } from '../../utils/toast'
+
 type UserDataToFirestore = {
   id: string
   name: string
@@ -26,6 +28,8 @@ function signUp(userData: UserData, onClose: () => void) {
   auth()
     .createUserWithEmailAndPassword(userData.email, userData.password)
     .then(({user}) => {
+      onClose()
+
       if (user) {
         saveUserOnFirestore({
           id: user.uid,
@@ -34,15 +38,16 @@ function signUp(userData: UserData, onClose: () => void) {
         })
       }
 
-      onClose()
+      showToast({type: 'success', title: 'Conta criada com sucesso 🛹'})
     })
     .catch(error => {
-      if (error.code === 'auth/email-already-exist') {
-        console.log('E-mail already exists')
+      if (error.code === 'auth/email-already-in-use') {
+        return showToast({type: 'error', title: 'Usuário já cadastrado 🛹'})
       }
       if (error.code === 'auth/invalid-email') {
-        console.log('E-mail invalid')
+        return showToast({type: 'error', title: 'Insira um e-mail válido 🛹'})
       }
+      return showToast({type: 'error', title: 'Não deu pra completar esse rolê, tente novamente 🛹'})
     })
 }
 
@@ -52,12 +57,13 @@ function signIn(email: string, password: string, onClose: () => void) {
       onClose()
     })
     .catch(error => {
-      if (error.code === 'auth/wrong-password') {
-        console.log('Password invalid')
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-email') {
+        return showToast({type: 'error', title: 'E-mail ou senha inválida 🛹'})
       }
-      if (error.code === 'auth/not-register') {
-        console.log('User not found')
+      if (error.code === 'auth/not-register' || error.code === 'auth/user-not-found') {
+        return showToast({type: 'error', title: 'Usuário não encontrado 🛹'})
       }
+      return showToast({type: 'error', title: 'Não deu pra completar esse rolê, tente novamente 🛹'})
     })
 }
 

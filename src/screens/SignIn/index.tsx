@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components'
+import Toast from 'react-native-toast-message'
 
 import * as S from './styles'
 import { useSignIn } from './useSignIn'
@@ -68,6 +69,8 @@ export function SignIn() {
           </S.Form>
         </S.ModalView>
       </S.CenteredView>
+
+      <Toast />
     </S.Modal>
   )
 }
