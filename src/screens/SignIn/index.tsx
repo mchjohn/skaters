@@ -33,12 +33,18 @@ export function SignIn() {
 
           <S.Form>
             <S.Input
+              keyboardType='email-address'
+              autoCapitalize='none'
+              autoCorrect={false}
               placeholder='Digite seu e-mail *'
               value={formData.email}
               onChangeText={formData.setEmail}
             />
 
             <S.Input
+              secureTextEntry
+              autoCorrect={false}
+              autoCapitalize='none'
               placeholder='Digite sua senha *'
               value={formData.password}
               onChangeText={formData.setPassword}

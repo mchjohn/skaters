@@ -34,18 +34,26 @@ export function SignUp() {
 
             <S.Form>
               <S.Input
+                autoCapitalize='words'
+                maxLength={32}
                 placeholder='Digite seu nome *'
                 value={formData.name}
                 onChangeText={formData.setName}
               />
 
               <S.Input
+                keyboardType='email-address'
+                autoCapitalize='none'
+                autoCorrect={false}
                 placeholder='Digite seu e-mail *'
                 value={formData.email}
                 onChangeText={formData.setEmail}
               />
 
               <S.Input
+                secureTextEntry
+                autoCapitalize='none'
+                autoCorrect={false}
                 placeholder='Digite sua senha *'
                 value={formData.password}
                 onChangeText={formData.setPassword}
