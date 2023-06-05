@@ -7,6 +7,7 @@ const Theme = {
     yellow4: '#FFFD01',
   },
   spacing: {
+    '2xs': 2,
     xs: 4,
     sm: 8,
     md: 16,

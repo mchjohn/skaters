@@ -41,8 +41,7 @@ export const Title = styled.Text`
 `
 
 export const Label = styled.Text`
-  margin-top: ${props => props.theme.spacing.xs}px
-  margin-bottom: ${props => props.theme.spacing.xs}px
+  margin-bottom: ${props => RFValue(props.theme.spacing['2xs'])}px
 
   color: ${props => props.theme.colors.gray1}
   fontSize: ${props => RFValue(props.theme.fontSize.sm)}px

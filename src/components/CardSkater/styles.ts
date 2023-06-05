@@ -32,8 +32,8 @@ export const WrapperLoading = styled.View`
 `
 
 export const Avatar = styled.Image`
-  width: ${props => props.theme.size.lg}px
-  height: ${props => props.theme.size.lg}px
+  width: ${props => RFValue(props.theme.size.lg)}px
+  height: ${props => RFValue(props.theme.size.lg)}px
   borderRadius: ${props => props.theme.radii.full}px
 `
 
