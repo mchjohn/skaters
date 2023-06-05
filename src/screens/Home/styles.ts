@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
 
+import { RFValue } from '../../utils/responsive_fontsize'
+
 export const View = styled.View`
   flex: 1
   padding: ${props => props.theme.spacing.md}px
@@ -22,5 +24,5 @@ export const Text = styled.Text`
   margin-bottom: ${props => props.theme.spacing.sm}px
 
   color: ${props => props.theme.colors.yellow4}
-  font-size: ${props => props.theme.fontSize.lg}px
+  font-size: ${props => RFValue(props.theme.fontSize.lg)}px
 `

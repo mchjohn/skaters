@@ -38,8 +38,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return unsubscribe
   }, [])
 
-  console.log('Hey user', user)
-
   return (
     <AuthContext.Provider
       value={{

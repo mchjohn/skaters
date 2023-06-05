@@ -2,6 +2,8 @@ import { useTheme } from 'styled-components'
 import { Ionicons } from '@expo/vector-icons'
 import SelectDropdown from 'react-native-select-dropdown'
 
+import { RFValue } from '../../utils/responsive_fontsize'
+
 const filters = ['Popular', 'A - Z']
 
 export function Filter() {
@@ -26,9 +28,9 @@ export function Filter() {
         borderRadius: radii.md,
         backgroundColor: colors.gray8
       }}
-      buttonTextStyle={{ color: colors.gray1, fontSize: fontSize.md }}
+      buttonTextStyle={{ color: colors.gray1, fontSize: RFValue(fontSize.md) }}
       renderDropdownIcon={
-        () => <Ionicons name="ios-chevron-down" size={32} color={colors.gray1} />
+        () => <Ionicons name="ios-chevron-down" size={RFValue(32)} color={colors.gray1} />
       }
       rowStyle={{
         width: size.xl,
@@ -37,7 +39,7 @@ export function Filter() {
         borderBottomColor: colors.gray9,
         backgroundColor: colors.gray8,
       }}
-      rowTextStyle={{ color: colors.gray1, fontSize: fontSize.md }}
+      rowTextStyle={{ color: colors.gray1, fontSize: RFValue(fontSize.md) }}
       dropdownStyle={{
         width: size.xl,
         marginTop: spacing.xs,

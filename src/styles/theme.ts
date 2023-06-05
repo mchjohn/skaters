@@ -34,7 +34,7 @@ const Theme = {
     lg: 20,
     xl: 24,
     '2xl': 28,
-  }
+  } as const
 }
 
 

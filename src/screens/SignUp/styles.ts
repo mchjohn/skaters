@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
 
+import { RFValue } from '../../utils/responsive_fontsize'
+
 export const Modal = styled.Modal.attrs({
   animationType: 'slide',
   transparent: true
@@ -29,7 +31,7 @@ export const Title = styled.Text`
 
   align-self: flex-start
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.xl}px
+  fontSize: ${props => RFValue(props.theme.fontSize.lg)}px
   fontWeight: 700
 `
 
@@ -39,13 +41,8 @@ export const Info = styled.View`
 
 export const Text = styled.Text`
   color: ${props => props.theme.colors.gray9}
-  fontSize: ${props => props.theme.fontSize.lg}px
+  fontSize: ${props => RFValue(props.theme.fontSize.md)}px
   fontWeight: 700
-`
-
-export const Link = styled.Text`
-  color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.md}px
 `
 
 export const Button = styled.Pressable`
@@ -82,7 +79,7 @@ export const Input = styled.TextInput.attrs({
   padding-left: ${props => props.theme.spacing.md}px
 
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
+  fontSize: ${props => RFValue(props.theme.fontSize.md)}px
 
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray9}
@@ -106,7 +103,7 @@ export const ButtonOutline = styled.Pressable`
 
 export const TextLink = styled.Text`
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.lg}px
+  fontSize: ${props => RFValue(props.theme.fontSize.md)}px
 `
 
 export const LabelInput = styled.Text`
@@ -115,5 +112,5 @@ export const LabelInput = styled.Text`
   margin-left: ${props => props.theme.spacing.xs}px
 
   color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.xs}px
+  fontSize: ${props => RFValue(props.theme.fontSize.xs)}px
 `

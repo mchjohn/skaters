@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
 
+import { RFValue } from '../../utils/responsive_fontsize'
+
 export const View = styled.View`
   flex: 1
   padding: ${props => props.theme.spacing.md}px
@@ -34,7 +36,7 @@ export const Title = styled.Text`
   margin-top: ${props => props.theme.spacing.md}px
 
   color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize['2xl']}px
+  fontSize: ${props => RFValue(props.theme.fontSize.lg)}px
   fontWeight: 700
 `
 
@@ -43,7 +45,7 @@ export const Label = styled.Text`
   margin-bottom: ${props => props.theme.spacing.xs}px
 
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.lg}px
+  fontSize: ${props => RFValue(props.theme.fontSize.sm)}px
 `
 
 export const TextBold = styled(Label)`
@@ -52,5 +54,5 @@ export const TextBold = styled(Label)`
 
 export const Link = styled.Text`
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.sm}px
+  fontSize: ${props => RFValue(props.theme.fontSize.xs)}px
 `
