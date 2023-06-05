@@ -1,24 +1,19 @@
-import { useTheme } from 'styled-components'
-import { ActivityIndicator } from 'react-native'
-
 import * as S from './styles'
 
 import { GoBackButton } from '../../components/GoBackButton'
 import { FavoriteButton } from '../../components/FavoriteButton'
 
-import { Info } from './Info'
 import { SignIn } from '../SignIn'
 import { SignUp } from '../SignUp'
+
+import { Info } from './Info'
+import { Avatar } from './Avatar'
 import { useProfile } from './useProfile'
 
 export function Profile() {
-  const { colors } = useTheme()
-
   const {
     skater,
     isFavorite,
-    isLoadingSkater,
-    isLoadingUserFirestoreData,
     onPress,
   } = useProfile()
 
@@ -29,12 +24,7 @@ export function Profile() {
 
         <S.Card>
           <S.WrapperAvatar>
-            <S.Avatar
-              source={{
-                uri: skater?.avatar,
-              }}
-              alt={`${skater?.name} de frente`}
-            />
+            <Avatar uri={skater?.avatar} name={skater?.name} />
 
             <FavoriteButton isFavorite={isFavorite} onPress={onPress} />
           </S.WrapperAvatar>

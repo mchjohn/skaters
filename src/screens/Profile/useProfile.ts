@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import * as UsersServices from '../../services/firebase/UsersServices'
 import * as LikesServices from '../../services/firebase/LikesServices'
 import * as SkatersServices from '../../services/firebase/SkatersServices'
+
 import { useAuth } from '../../contexts/AuthContext'
 import { useModal } from '../../contexts/ModalContext'
 
@@ -15,10 +16,10 @@ export function useProfile() {
   const route = useRoute<RouteProps>()
   const [isFavorite, setIsFavorite] = useState(false)
 
-  const { handleToggleSignInModal } = useModal()
   const { user } = useAuth()
+  const { handleToggleSignInModal } = useModal()
 
-  const { data: userFirestoreData, isLoading: isLoadingUserFirestoreData } = useQuery(
+  const { data: userFirestoreData } = useQuery(
     [QueryKeys.USER],
     () => UsersServices.getUserData(user?.id),
   )
@@ -45,7 +46,7 @@ export function useProfile() {
     }
   }
 
-  const { data: skater, isLoading: isLoadingSkater } = useQuery(
+  const { data: skater } = useQuery(
     [QueryKeys.SKATER],
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     () => SkatersServices.getSkaterById(route.params!.skaterId),
@@ -58,8 +59,6 @@ export function useProfile() {
   return {
     skater,
     isFavorite,
-    isLoadingSkater,
-    isLoadingUserFirestoreData,
     onPress,
     handleToggleFavorite,
   }
