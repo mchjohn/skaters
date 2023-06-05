@@ -11,8 +11,8 @@ export interface ISkater {
   level: string;
   avatar: string;
   stance: string;
+  likes?: number;
   address: Address;
   sponsors: string[];
   updatedAt: string;
-  amountLikes: number;
 }

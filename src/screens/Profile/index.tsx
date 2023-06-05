@@ -1,17 +1,24 @@
+import { useTheme } from 'styled-components'
+import { ActivityIndicator } from 'react-native'
+
 import * as S from './styles'
 
 import { GoBackButton } from '../../components/GoBackButton'
 import { FavoriteButton } from '../../components/FavoriteButton'
 
 import { Info } from './Info'
-import { useProfile } from './useProfile'
 import { SignIn } from '../SignIn'
 import { SignUp } from '../SignUp'
+import { useProfile } from './useProfile'
 
 export function Profile() {
+  const { colors } = useTheme()
+
   const {
     skater,
     isFavorite,
+    isLoadingSkater,
+    isLoadingUserFirestoreData,
     onPress,
   } = useProfile()
 

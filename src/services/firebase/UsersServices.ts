@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 
+import { IUser } from '../../interfaces/user'
 import { showToast } from '../../utils/toast'
 
 type UserDataToFirestore = {
@@ -8,6 +9,13 @@ type UserDataToFirestore = {
   name: string
   email: string
 }
+
+async function getDocRef(collection: string, id: string) {
+  const userDocRef = firestore().collection(collection).doc(id)
+
+  return userDocRef
+}
+
 async function saveUserOnFirestore(userData: UserDataToFirestore) {
   try {
     firestore().collection('users').doc(userData.id).set({
@@ -71,4 +79,16 @@ function signOut() {
   auth().signOut()
 }
 
-export { signUp, signIn, signOut }
+async function getUserData(userId?: string) {
+  if (!userId) return Promise.resolve({} as IUser)
+
+  const ref = await (await getDocRef('users', userId)).get()
+
+  if (ref.exists) {
+    const user = ref.data()
+
+    return user as IUser
+  }
+}
+
+export { signUp, signIn, signOut, getUserData }

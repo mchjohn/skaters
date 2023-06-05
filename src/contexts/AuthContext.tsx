@@ -9,18 +9,14 @@ type AuthProviderProps = {
 
 interface AuthContextType {
   user: IUser | null;
-  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<IUser | null>(null)
-  const [loading, setLoading] = useState(false)
 
   function checkUserIsLoggedIn() {
-    setLoading(true)
-
     auth().onAuthStateChanged((_user) => {
       if (_user) {
         const userData = {
@@ -34,8 +30,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setUser(null)
       }
     })
-
-    setLoading(false)
   }
 
   useEffect(() => {
@@ -44,11 +38,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return unsubscribe
   }, [])
 
+  console.log('Hey user', user)
+
   return (
     <AuthContext.Provider
       value={{
         user,
-        loading,
       }}
     >
       {children}

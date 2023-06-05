@@ -17,7 +17,7 @@ export function CardSkater({ data, isLoading }: Props) {
   const navigation = useNavigation<NavigationProps>()
 
   function handleGoToProfile(id: string) {
-    navigation.navigate('Profile', { userId: id })
+    navigation.navigate('Profile', { skaterId: id })
   }
 
   return (
