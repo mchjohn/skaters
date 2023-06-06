@@ -3,22 +3,37 @@ import firestore from '@react-native-firebase/firestore'
 import { ISkater } from '../../interfaces/skater'
 import SkatersMapper from '../mappers/SkatersMapper'
 
-async function getSnapshot(collection: string) {
-  return firestore().collection(collection).get()
-}
-
 async function getDocRef(collection: string, id: string) {
   const skaterDocRef = firestore().collection(collection).doc(id)
 
   return skaterDocRef.get()
 }
 
-async function getSkaters() {
-  const skatersSnapshot = await getSnapshot('skaters')
+async function getSkaters(lastItemId: string | null) {
+  let query = firestore()
+    .collection('skaters')
+    .orderBy('name')
+    .limit(5)
 
-  return skatersSnapshot.docs.map(doc =>
-    SkatersMapper.toDomain(doc.id, doc.data() as ISkater)
-  )
+  if (lastItemId !== undefined && lastItemId !== null) {
+    const lastItemDoc = await firestore().collection('skaters').doc(lastItemId).get()
+
+    if (lastItemDoc.exists) {
+      query = query.startAfter(lastItemDoc)
+    } else {
+      console.log(`Document with ID ${lastItemId} does not exist.`)
+    }
+  }
+
+  const snapshot = await query.get()
+  const skaters: ISkater[] = []
+
+  snapshot.docs.map(doc => {
+    const skater = SkatersMapper.toDomain(doc.id, doc.data() as ISkater)
+    skaters.push(skater)
+  })
+
+  return skaters
 }
 
 async function getSkaterById(id: string) {
