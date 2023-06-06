@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { FlashList } from '@shopify/flash-list'
 
+import { useAuth } from '../../contexts/AuthContext'
+
 import * as S from './styles'
 import { useHome } from './useHome'
 
@@ -8,13 +10,12 @@ import { Filter } from '../../components/Filter'
 import { CardSkater } from '../../components/CardSkater'
 import { SearchButton } from '../../components/Search'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
-import { useAuth } from '../../contexts/AuthContext'
 
 export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
 
   const { user } = useAuth()
-  const { skaters, isLoadingSkaters } = useHome()
+  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage } = useHome()
 
   function handleToggleModal() {
     setModalVisible(prev => !prev)
@@ -32,12 +33,17 @@ export function Home() {
         </S.Header>
 
         <FlashList
-          data={skaters}
+          data={skaters?.pages?.flatMap((page) => page)}
           renderItem={({ item }) => <CardSkater data={item} isLoading={isLoadingSkaters} />}
           estimatedItemSize={114}
           ItemSeparatorComponent={() => <S.Separator />}
           ListHeaderComponentStyle={{ marginTop: 16 }}
           showsVerticalScrollIndicator={false}
+          onEndReached={hasNextPage ? fetchNextPage : undefined}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={
+            isFetchingNextPage ? <S.Text>Loading more...</S.Text> : null
+          }
         />
 
       </S.View>
