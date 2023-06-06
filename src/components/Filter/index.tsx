@@ -6,14 +6,26 @@ import { RFValue } from '../../utils/responsive_fontsize'
 
 const filters = ['Popular', 'A - Z']
 
-export function Filter() {
+const options = {
+  Popular: 'likes',
+  'A - Z': 'name'
+} as const
+
+type Options = 'Popular' | 'A - Z'
+export type SelectedItemProps = 'name' | 'likes'
+
+type Props = {
+  onSelect: (selectedItem: SelectedItemProps) => void
+}
+
+export function Filter({ onSelect }: Props) {
   const { radii, colors, fontSize, size, spacing } = useTheme()
 
   return (
     <SelectDropdown
       data={filters}
-      onSelect={(selectedItem, index) => {
-        console.log(selectedItem, index)
+      onSelect={(selectedItem: Options) => {
+        onSelect(options[selectedItem])
       }}
       buttonTextAfterSelection={(selectedItem) => {
         return selectedItem

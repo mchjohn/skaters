@@ -9,10 +9,10 @@ async function getDocRef(collection: string, id: string) {
   return skaterDocRef.get()
 }
 
-async function getSkaters(lastItemId: string | null) {
+async function getSkaters(lastItemId: string | null, orderBy: string) {
   let query = firestore()
     .collection('skaters')
-    .orderBy('name')
+    .orderBy(orderBy)
     .limit(5)
 
   if (lastItemId !== undefined && lastItemId !== null) {

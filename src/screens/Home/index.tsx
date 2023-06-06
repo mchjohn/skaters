@@ -16,7 +16,7 @@ export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
 
   const { user } = useAuth()
-  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage } = useHome()
+  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter } = useHome()
 
   function handleToggleModal() {
     setModalVisible(prev => !prev)
@@ -28,7 +28,7 @@ export function Home() {
         <S.Text onPress={handleToggleModal}>Olá, John 🛹</S.Text>
 
         <S.Header>
-          <Filter />
+          <Filter onSelect={handleSelectFilter} />
 
           <SearchButton />
         </S.Header>
