@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FlashList } from '@shopify/flash-list'
+import { TextInput } from 'react-native'
 
 import { useAuth } from '../../contexts/AuthContext'
 
@@ -16,7 +17,7 @@ export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
 
   const { user } = useAuth()
-  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter } = useHome()
+  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter, debouncedSearch } = useHome()
 
   function handleToggleModal() {
     setModalVisible(prev => !prev)
@@ -30,7 +31,8 @@ export function Home() {
         <S.Header>
           <Filter onSelect={handleSelectFilter} />
 
-          <SearchButton />
+          {/* <SearchButton /> */}
+          <TextInput style={{ width: '100%', backgroundColor: 'gray' }} onChangeText={debouncedSearch} />
         </S.Header>
 
         <FlashList

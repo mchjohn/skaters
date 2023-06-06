@@ -9,11 +9,16 @@ async function getDocRef(collection: string, id: string) {
   return skaterDocRef.get()
 }
 
-async function getSkaters(lastItemId: string | null, orderBy: string) {
+async function getSkaters(lastItemId: string | null, orderBy: string, searchTerm: string) {
   let query = firestore()
     .collection('skaters')
-    .orderBy(orderBy)
     .limit(5)
+
+  if (searchTerm) {
+    query = query.where('name', 'array-contains', searchTerm)
+  } else {
+    query = query.orderBy(orderBy)
+  }
 
   if (lastItemId !== undefined && lastItemId !== null) {
     const lastItemDoc = await firestore().collection('skaters').doc(lastItemId).get()
