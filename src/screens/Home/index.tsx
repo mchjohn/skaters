@@ -9,7 +9,6 @@ import { useHome } from './useHome'
 import { Filter } from '../../components/Filter'
 import { CardSkater } from '../../components/CardSkater'
 import { ListFooter } from '../../components/ListFooter'
-import { SearchButton } from '../../components/Search'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
 
 export function Home() {
@@ -29,8 +28,6 @@ export function Home() {
 
         <S.Header>
           <Filter onSelect={handleSelectFilter} />
-
-          <SearchButton />
         </S.Header>
 
         <FlashList
