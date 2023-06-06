@@ -1,30 +1,56 @@
+import { useState } from 'react'
 import { FlashList } from '@shopify/flash-list'
 
-import { DATA } from '../../utils/FAKE_DATA'
+import { useAuth } from '../../contexts/AuthContext'
 
 import * as S from './styles'
+import { useHome } from './useHome'
 
 import { Filter } from '../../components/Filter'
 import { CardSkater } from '../../components/CardSkater'
-import { SearchButton } from '../../components/Search'
+import { ListFooter } from '../../components/ListFooter'
+import { ModalUserInfo } from '../../components/ModalUserInfo'
 
 export function Home() {
+  const [modalVisible, setModalVisible] = useState(false)
+
+  const { user } = useAuth()
+  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter } = useHome()
+
+  function handleToggleModal() {
+    setModalVisible(prev => !prev)
+  }
+
   return (
-    <S.View>
-      <S.Header>
-        <Filter />
+    <>
+      <S.View>
+        <S.Text onPress={handleToggleModal}>Olá, John 🛹</S.Text>
 
-        <SearchButton />
-      </S.Header>
+        <S.Header>
+          <Filter onSelect={handleSelectFilter} />
+        </S.Header>
 
-      <FlashList
-        data={DATA}
-        renderItem={({ item }) => <CardSkater data={item} />}
-        estimatedItemSize={114}
-        ItemSeparatorComponent={() => <S.Separator />}
-        ListHeaderComponentStyle={{ marginTop: 16 }}
-        showsVerticalScrollIndicator={false}
-      />
-    </S.View>
+        <FlashList
+          data={skaters?.pages?.flatMap((page) => page)}
+          renderItem={({ item }) => <CardSkater data={item} isLoading={isLoadingSkaters} />}
+          estimatedItemSize={114}
+          ItemSeparatorComponent={() => <S.Separator />}
+          ListHeaderComponentStyle={{ marginTop: 16 }}
+          showsVerticalScrollIndicator={false}
+          onEndReached={hasNextPage ? fetchNextPage : undefined}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={isFetchingNextPage ? <ListFooter /> : null}
+        />
+
+      </S.View>
+
+      {user &&
+        <ModalUserInfo
+          user={user}
+          modalVisible={modalVisible}
+          handleToggleModal={handleToggleModal}
+        />
+      }
+    </>
   )
 }

@@ -1,5 +1,6 @@
 import { useTheme } from 'styled-components'
 import { useNavigation } from '@react-navigation/native'
+import { ActivityIndicator } from 'react-native'
 
 import * as S from './styles'
 
@@ -8,14 +9,15 @@ import { NavigationProps } from '../../../@types/routes'
 
 type Props = {
   data: ISkater
+  isLoading: boolean
 }
 
-export function CardSkater({ data }: Props) {
+export function CardSkater({ data, isLoading }: Props) {
   const { colors } = useTheme()
   const navigation = useNavigation<NavigationProps>()
 
   function handleGoToProfile(id: string) {
-    navigation.navigate('Profile', { userId: id })
+    navigation.navigate('Profile', { skaterId: id })
   }
 
   return (
@@ -27,15 +29,21 @@ export function CardSkater({ data }: Props) {
         }}
         onPress={() => handleGoToProfile(data.id)}
       >
-        <S.Avatar
-          source={{
-            uri: data.avatar,
-          }}
-        />
+        {isLoading ? (
+          <S.WrapperLoading>
+            <ActivityIndicator size="large" color={colors.yellow4} />
+          </S.WrapperLoading>
+        ) : (
+          <S.Avatar
+            source={{
+              uri: data.avatar,
+            }}
+          />
+        )}
 
         <S.Info>
-          <S.Title>{data.name}</S.Title>
-          <S.Text>{data.level} - {data.country}, {data.state.uf}</S.Text>
+          <S.Title>{data?.name}</S.Title>
+          <S.Text>{data?.level} - {data?.address?.country}, {data?.address?.uf}</S.Text>
           <S.Link>Ver mais...</S.Link>
         </S.Info>
       </S.Button>
