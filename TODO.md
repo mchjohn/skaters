@@ -1,4 +1,4 @@
-[ ] Loading infinito lista de skatistas
+[ ] Implementar search
 
 [ ] Adicionar insta @fulaninho
 [ ] Adicionar loadings no app

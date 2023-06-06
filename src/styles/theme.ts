@@ -1,3 +1,5 @@
+import { RFValue } from '../utils/responsive_fontsize'
+
 const Theme = {
   colors: {
     gray1: '#FAFAFA',
@@ -7,18 +9,18 @@ const Theme = {
     yellow4: '#FFFD01',
   },
   spacing: {
-    '2xs': 2,
-    xs: 4,
-    sm: 8,
-    md: 16,
-    lg: 18,
-    xl: 40,
+    '2xs': RFValue(2),
+    xs: RFValue(4),
+    sm: RFValue(8),
+    md: RFValue(16),
+    lg: RFValue(18),
+    xl: RFValue(40),
   },
   size: {
-    sm: 48,
-    md: 64,
-    lg: 96,
-    xl: 160,
+    sm: RFValue(48),
+    md: RFValue(64),
+    lg: RFValue(96),
+    xl: RFValue(160),
     full: '100%',
   },
   radii: {
@@ -28,15 +30,14 @@ const Theme = {
     full: 9999,
   },
   fontSize: {
-    '2xs': 10,
-    xs: 12,
-    sm: 14,
-    md: 16,
-    lg: 20,
-    xl: 24,
-    '2xl': 28,
-  } as const
-}
-
+    '2xs': RFValue(10),
+    xs: RFValue(12),
+    sm: RFValue(14),
+    md: RFValue(16),
+    lg: RFValue(20),
+    xl: RFValue(24),
+    '2xl': RFValue(28),
+  }
+} as const
 
 export default Theme
