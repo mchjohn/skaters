@@ -8,6 +8,7 @@ import { useHome } from './useHome'
 
 import { Filter } from '../../components/Filter'
 import { CardSkater } from '../../components/CardSkater'
+import { ListFooter } from '../../components/ListFooter'
 import { SearchButton } from '../../components/Search'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
 
@@ -41,9 +42,7 @@ export function Home() {
           showsVerticalScrollIndicator={false}
           onEndReached={hasNextPage ? fetchNextPage : undefined}
           onEndReachedThreshold={0.1}
-          ListFooterComponent={
-            isFetchingNextPage ? <S.Text>Loading more...</S.Text> : null
-          }
+          ListFooterComponent={isFetchingNextPage ? <ListFooter /> : null}
         />
 
       </S.View>
