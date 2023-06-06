@@ -4,14 +4,21 @@ import {
   onlineManager,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import { useEffect } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { ThemeProvider } from 'styled-components'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AppState, Platform } from 'react-native'
+import { useCallback, useEffect, useState } from 'react'
 import type { AppStateStatus } from 'react-native'
 import Toast from 'react-native-toast-message'
 import NetInfo from '@react-native-community/netinfo'
+
+import Octicons from '@expo/vector-icons/Octicons'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import * as SplashScreen from 'expo-splash-screen'
+import * as Font from 'expo-font'
+
+SplashScreen.preventAutoHideAsync()
 
 import Theme from './src/styles/theme'
 
@@ -36,11 +43,42 @@ function onAppStateChange(status: AppStateStatus) {
 const queryClient = new QueryClient()
 
 export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false)
+
   useEffect(() => {
     const subscription = AppState.addEventListener('change', onAppStateChange)
 
     return () => subscription.remove()
   }, [])
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await Font.loadAsync({
+          ...Octicons.font,
+          ...Ionicons.font,
+        })
+
+        await new Promise(resolve => setTimeout(resolve, 2000))
+      } catch (e) {
+        console.warn(e)
+      } finally {
+        setAppIsReady(true)
+      }
+    }
+
+    prepare()
+  }, [])
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync()
+    }
+  }, [appIsReady])
+
+  if (!appIsReady) {
+    return null
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -48,7 +86,7 @@ export default function App() {
         <SafeAreaProvider>
           <AuthProvider>
             <ModalProvider>
-              <SafeArea>
+              <SafeArea onLayoutRootView={onLayoutRootView}>
                 <Route />
 
                 <Toast />
