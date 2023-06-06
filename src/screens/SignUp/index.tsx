@@ -36,7 +36,7 @@ export function SignUp() {
               <S.Input
                 autoCapitalize='words'
                 maxLength={32}
-                placeholder='Digite seu nome *'
+                placeholder='Digite seu nome/apelido *'
                 value={formData.name}
                 onChangeText={formData.setName}
               />

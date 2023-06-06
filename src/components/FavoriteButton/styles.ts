@@ -1,7 +1,5 @@
 import styled from 'styled-components/native'
 
-import { RFValue } from '../../utils/responsive_fontsize'
-
 export const Button = styled.Pressable`
   position: absolute
   top: 0px
@@ -9,8 +7,8 @@ export const Button = styled.Pressable`
   margin-top: ${props => props.theme.spacing.xs}px
   margin-right: ${props => props.theme.spacing.xs}px
 
-  width: ${props => RFValue(props.theme.size.md)}px
-  height: ${props => RFValue(props.theme.size.md)}px
+  width: ${props => props.theme.size.md}px
+  height: ${props => props.theme.size.md}px
 
   alignItems: center
   justifyContent: center

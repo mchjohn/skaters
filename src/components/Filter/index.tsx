@@ -40,7 +40,7 @@ export function Filter({ onSelect }: Props) {
         borderRadius: radii.md,
         backgroundColor: colors.gray8
       }}
-      buttonTextStyle={{ color: colors.gray1, fontSize: RFValue(fontSize.md) }}
+      buttonTextStyle={{ color: colors.gray1, fontSize: fontSize.md }}
       renderDropdownIcon={
         () => <Ionicons name="ios-chevron-down" size={RFValue(32)} color={colors.gray1} />
       }
@@ -51,7 +51,7 @@ export function Filter({ onSelect }: Props) {
         borderBottomColor: colors.gray9,
         backgroundColor: colors.gray8,
       }}
-      rowTextStyle={{ color: colors.gray1, fontSize: RFValue(fontSize.md) }}
+      rowTextStyle={{ color: colors.gray1, fontSize: fontSize.md }}
       dropdownStyle={{
         width: size.xl,
         marginTop: spacing.xs,
