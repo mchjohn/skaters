@@ -14,7 +14,7 @@ import { ModalUserInfo } from '../../components/ModalUserInfo'
 export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
 
-  const { user } = useAuth()
+  const { user, isLoading } = useAuth()
   const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter } = useHome()
 
   function handleToggleModal() {
@@ -24,7 +24,9 @@ export function Home() {
   return (
     <>
       <S.View>
-        <S.Text onPress={handleToggleModal}>Olá, John 🛹</S.Text>
+        {user?.name &&
+          <S.Text onPress={handleToggleModal}>Olá, {user.name} 🛹</S.Text>
+        }
 
         <S.Header>
           <Filter onSelect={handleSelectFilter} />
@@ -41,7 +43,6 @@ export function Home() {
           onEndReachedThreshold={0.1}
           ListFooterComponent={isFetchingNextPage ? <ListFooter /> : null}
         />
-
       </S.View>
 
       {user &&
