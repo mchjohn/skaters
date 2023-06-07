@@ -1,5 +1,6 @@
 [ ] Implementar search
 
+[ ] Ajustar perfil do usuário
 [ ] Adicionar insta @fulaninho
 [ ] Adicionar loadings no app
 [ ] Icone exibir/ocultar senha no input
