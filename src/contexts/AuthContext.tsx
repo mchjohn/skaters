@@ -12,7 +12,7 @@ type AuthProviderProps = {
 
 interface AuthContextType {
   user: IUser | null
-  isLoading: boolean
+  isUserLoading: boolean
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
@@ -61,7 +61,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     <AuthContext.Provider
       value={{
         user,
-        isLoading,
+        isUserLoading: isLoading,
       }}
     >
       {children}

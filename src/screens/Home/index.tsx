@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext'
 
 import * as S from './styles'
 import { useHome } from './useHome'
+import { UserInfo } from './UserInfo'
 
 import { Filter } from '../../components/Filter'
 import { CardSkater } from '../../components/CardSkater'
@@ -14,8 +15,15 @@ import { ModalUserInfo } from '../../components/ModalUserInfo'
 export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
 
-  const { user, isLoading } = useAuth()
-  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter } = useHome()
+  const { user, isUserLoading } = useAuth()
+  const {
+    skaters,
+    hasNextPage,
+    isLoadingSkaters,
+    isFetchingNextPage,
+    fetchNextPage,
+    handleSelectFilter
+  } = useHome()
 
   function handleToggleModal() {
     setModalVisible(prev => !prev)
@@ -24,9 +32,11 @@ export function Home() {
   return (
     <>
       <S.View>
-        {user?.name &&
-          <S.Text onPress={handleToggleModal}>Olá, {user.name} 🛹</S.Text>
-        }
+        <UserInfo
+          name={user?.name}
+          isLoading={isUserLoading}
+          handleToggleModal={handleToggleModal}
+        />
 
         <S.Header>
           <Filter onSelect={handleSelectFilter} />

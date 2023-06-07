@@ -14,6 +14,7 @@ export function Profile() {
   const {
     skater,
     isFavorite,
+    isUserLoading,
     onPress,
   } = useProfile()
 
@@ -26,7 +27,7 @@ export function Profile() {
           <S.WrapperAvatar>
             <Avatar uri={skater?.avatar} name={skater?.name} />
 
-            <FavoriteButton isFavorite={isFavorite} onPress={onPress} />
+            <FavoriteButton isLoading={isUserLoading} isFavorite={isFavorite} onPress={onPress} />
           </S.WrapperAvatar>
 
           <S.Title>{skater?.name}</S.Title>

@@ -15,7 +15,7 @@ export function useProfile() {
   const route = useRoute<RouteProps>()
   const [isFavorite, setIsFavorite] = useState(false)
 
-  const { user } = useAuth()
+  const { user, isUserLoading } = useAuth()
   const { handleToggleSignInModal } = useModal()
 
   const hasLiked = useMemo(() => {
@@ -53,6 +53,7 @@ export function useProfile() {
   return {
     skater,
     isFavorite,
+    isUserLoading,
     onPress,
     handleToggleFavorite,
   }
