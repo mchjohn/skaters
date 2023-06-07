@@ -1,14 +1,15 @@
 import * as S from './styles'
 
+import { Loading } from '../../components/Loading'
+
 export function Avatar({ uri, name }: { uri?: string, name?: string}) {
   return (
     <>
       {uri ?
         <S.Avatar source={{ uri: uri }} alt={`${name} de frente`} /> :
-        <S.Avatar
-          source={require('../../images/inskate-logo.png')}
-          alt='logotipo do inSkate, silhueta de skatista remando'
-        />
+        <S.LoadingAvatar>
+          <Loading self='center' size='large' />
+        </S.LoadingAvatar>
       }
     </>
   )

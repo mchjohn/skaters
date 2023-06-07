@@ -5,6 +5,7 @@ import { FavoriteButton } from '../../components/FavoriteButton'
 
 import { SignIn } from '../SignIn'
 import { SignUp } from '../SignUp'
+import { Loading } from '../../components/Loading'
 
 import { Info } from './Info'
 import { Avatar } from './Avatar'
@@ -15,6 +16,7 @@ export function Profile() {
     skater,
     isFavorite,
     isUserLoading,
+    isSkaterLoading,
     onPress,
   } = useProfile()
 
@@ -23,25 +25,30 @@ export function Profile() {
       <S.View>
         <GoBackButton />
 
-        <S.Card>
-          <S.WrapperAvatar>
-            <Avatar uri={skater?.avatar} name={skater?.name} />
+        {isSkaterLoading ?
+          <Loading self='center' size='large' my={60} /> :
+          <S.Card>
+            <S.WrapperAvatar>
+              <Avatar uri={skater?.avatar} name={skater?.name} />
 
-            <FavoriteButton isLoading={isUserLoading} isFavorite={isFavorite} onPress={onPress} />
-          </S.WrapperAvatar>
+              <FavoriteButton isLoading={isUserLoading} isFavorite={isFavorite} onPress={onPress} />
+            </S.WrapperAvatar>
 
-          <S.Title>{skater?.name}</S.Title>
+            <S.Title>{skater?.name}</S.Title>
 
-          <S.WrapperInfo>
-            <Info label='Local:' value={` ${skater?.address.state}, ${skater?.address.country}`} />
-            <Info label='Idade:' value={` ${skater?.age}`} />
-            <Info label='Status:' value={` ${skater?.level}`} />
-            <Info label='Stance:' value={` ${skater?.stance}`} />
-            <Info label='Patrocínios:' value={` ${skater?.sponsors?.join(', ')}`} />
-          </S.WrapperInfo>
+            <S.WrapperInfo>
+              <Info label='Local:' value={` ${skater?.address.state}, ${skater?.address.country}`} />
+              <Info label='Idade:' value={` ${skater?.age}`} />
+              <Info label='Status:' value={` ${skater?.level}`} />
+              <Info label='Stance:' value={` ${skater?.stance}`} />
+              <Info label='Patrocínios:' value={` ${skater?.sponsors?.join(', ')}`} />
+            </S.WrapperInfo>
 
-          <S.Link>Última atualização: {skater?.updatedAt} - Enviar uma atualização.</S.Link>
-        </S.Card>
+            <S.Link>Última atualização: {skater?.updatedAt} - Enviar uma atualização.</S.Link>
+          </S.Card>
+        }
+
+
       </S.View>
 
       <SignIn />

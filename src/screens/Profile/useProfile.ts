@@ -40,7 +40,7 @@ export function useProfile() {
     }
   }
 
-  const { data: skater } = useQuery(
+  const { data: skater, isLoading } = useQuery(
     [QueryKeys.SKATER],
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     () => SkatersServices.getSkaterById(route.params!.skaterId),
@@ -54,6 +54,7 @@ export function useProfile() {
     skater,
     isFavorite,
     isUserLoading,
+    isSkaterLoading: isLoading,
     onPress,
     handleToggleFavorite,
   }
