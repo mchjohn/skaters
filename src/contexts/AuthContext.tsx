@@ -1,20 +1,38 @@
 import auth from '@react-native-firebase/auth'
+import { useMutation } from '@tanstack/react-query'
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 
 import { IUser } from '../interfaces/user'
+
+import * as UsersServices from '../services/firebase/UsersServices'
 
 type AuthProviderProps = {
   children: ReactNode;
 };
 
 interface AuthContextType {
-  user: IUser | null;
+  user: IUser | null
+  isUserLoading: boolean
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<IUser | null>(null)
+
+  const { mutate: getUserDataOnFirestore, isLoading } =
+    useMutation((id: string) => UsersServices.getUserData(id),
+      {
+        onSuccess: (data) => {
+          if (data) {
+            setUser({
+              ...user,
+              ...data
+            })
+          }
+        }
+      }
+    )
 
   function checkUserIsLoggedIn() {
     auth().onAuthStateChanged((_user) => {
@@ -26,6 +44,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         }
 
         setUser(userData)
+        getUserDataOnFirestore(_user.uid)
       } else {
         setUser(null)
       }
@@ -36,12 +55,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const unsubscribe = checkUserIsLoggedIn()
 
     return unsubscribe
-  }, [])
+  }, []) // eslint-disable-line
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        isUserLoading: isLoading,
       }}
     >
       {children}

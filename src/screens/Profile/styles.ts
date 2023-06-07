@@ -24,6 +24,14 @@ export const Avatar = styled.Image`
   borderRadius: ${props => props.theme.radii.md}px
 `
 
+export const LoadingAvatar = styled.View`
+  width: ${props => props.theme.size.full}
+  height: ${props => props.theme.size.full}
+  alignItems: center
+  justifyContent: center
+  borderRadius: ${props => props.theme.radii.md}px
+`
+
 export const WrapperInfo = styled.View`
   flex: 1
   margin-top: ${props => props.theme.spacing.md}px

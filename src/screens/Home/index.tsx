@@ -5,17 +5,25 @@ import { useAuth } from '../../contexts/AuthContext'
 
 import * as S from './styles'
 import { useHome } from './useHome'
+import { UserInfo } from './UserInfo'
 
 import { Filter } from '../../components/Filter'
+import { Loading } from '../../components/Loading'
 import { CardSkater } from '../../components/CardSkater'
-import { ListFooter } from '../../components/ListFooter'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
 
 export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
 
-  const { user } = useAuth()
-  const { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter } = useHome()
+  const { user, isUserLoading } = useAuth()
+  const {
+    skaters,
+    hasNextPage,
+    isLoadingSkaters,
+    isFetchingNextPage,
+    fetchNextPage,
+    handleSelectFilter
+  } = useHome()
 
   function handleToggleModal() {
     setModalVisible(prev => !prev)
@@ -24,7 +32,11 @@ export function Home() {
   return (
     <>
       <S.View>
-        <S.Text onPress={handleToggleModal}>Olá, John 🛹</S.Text>
+        <UserInfo
+          name={user?.name}
+          isLoading={isUserLoading}
+          handleToggleModal={handleToggleModal}
+        />
 
         <S.Header>
           <Filter onSelect={handleSelectFilter} />
@@ -39,9 +51,9 @@ export function Home() {
           showsVerticalScrollIndicator={false}
           onEndReached={hasNextPage ? fetchNextPage : undefined}
           onEndReachedThreshold={0.1}
-          ListFooterComponent={isFetchingNextPage ? <ListFooter /> : null}
+          ListFooterComponent={isFetchingNextPage ? <Loading self='center'  /> : null}
+          ListEmptyComponent={<Loading self='center' />}
         />
-
       </S.View>
 
       {user &&

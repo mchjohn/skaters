@@ -17,6 +17,8 @@ type Props = {
 export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) {
   const { colors } = useTheme()
 
+  const amountLikes = user?.skatersLikes?.length ?? 0
+
   function handleSignOut() {
     UsersServices.signOut()
 
@@ -34,13 +36,15 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
         <ModalCloseButton onPress={handleToggleModal} />
 
         <S.ModalView>
-          <S.Title>Olá, John {user?.name} 🛹</S.Title>
+          <S.Title>Olá, {user?.name} 🛹</S.Title>
 
           <S.Info>
             <S.Text>Email: {user?.email}</S.Text>
           </S.Info>
 
-          <S.Text>Você curtiu 100 skatistas nesse rolê</S.Text>
+          <S.Text>
+            Você curtiu {amountLikes} skatistas nesse rolê
+          </S.Text>
         </S.ModalView>
 
         <S.Button
