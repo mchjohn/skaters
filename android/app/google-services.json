@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1007916873267",
+    "project_id": "inskate-e4aea",
+    "storage_bucket": "inskate-e4aea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007916873267:android:f9479caf56d138e74e9546",
+        "android_client_info": {
+          "package_name": "com.micheljohn.inskate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeBtxUw9pTLo0LieUAkzkjsHRVC_AiftU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
