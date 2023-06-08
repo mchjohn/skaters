@@ -1,30 +1,68 @@
+import { useState } from 'react'
 import { FlashList } from '@shopify/flash-list'
 
-import { DATA } from '../../utils/FAKE_DATA'
+import { useAuth } from '../../contexts/AuthContext'
 
 import * as S from './styles'
+import { useHome } from './useHome'
+import { UserInfo } from './UserInfo'
 
 import { Filter } from '../../components/Filter'
+import { Loading } from '../../components/Loading'
 import { CardSkater } from '../../components/CardSkater'
-import { SearchButton } from '../../components/Search'
+import { ModalUserInfo } from '../../components/ModalUserInfo'
 
 export function Home() {
+  const [modalVisible, setModalVisible] = useState(false)
+
+  const { user, isUserLoading } = useAuth()
+  const {
+    skaters,
+    hasNextPage,
+    isLoadingSkaters,
+    isFetchingNextPage,
+    fetchNextPage,
+    handleSelectFilter
+  } = useHome()
+
+  function handleToggleModal() {
+    setModalVisible(prev => !prev)
+  }
+
   return (
-    <S.View>
-      <S.Header>
-        <Filter />
+    <>
+      <S.View>
+        <UserInfo
+          name={user?.name}
+          isLoading={isUserLoading}
+          handleToggleModal={handleToggleModal}
+        />
 
-        <SearchButton />
-      </S.Header>
+        <S.Header>
+          <Filter onSelect={handleSelectFilter} />
+        </S.Header>
 
-      <FlashList
-        data={DATA}
-        renderItem={({ item }) => <CardSkater data={item} />}
-        estimatedItemSize={114}
-        ItemSeparatorComponent={() => <S.Separator />}
-        ListHeaderComponentStyle={{ marginTop: 16 }}
-        showsVerticalScrollIndicator={false}
-      />
-    </S.View>
+        <FlashList
+          data={skaters?.pages?.flatMap((page) => page)}
+          renderItem={({ item }) => <CardSkater data={item} isLoading={isLoadingSkaters} />}
+          estimatedItemSize={114}
+          ItemSeparatorComponent={() => <S.Separator />}
+          ListHeaderComponentStyle={{ marginTop: 16 }}
+          showsVerticalScrollIndicator={false}
+          onEndReached={hasNextPage ? fetchNextPage : undefined}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={isFetchingNextPage ? <Loading self='center'  /> : null}
+          ListEmptyComponent={<Loading self='center' />}
+        />
+      </S.View>
+
+      {user &&
+        <ModalUserInfo
+          user={user}
+          modalVisible={modalVisible}
+          handleToggleModal={handleToggleModal}
+        />
+      }
+    </>
   )
 }

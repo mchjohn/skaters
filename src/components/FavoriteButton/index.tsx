@@ -10,15 +10,17 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg'
 
 import * as S from './styles'
+import { Loading } from '../Loading'
 
 type Props = {
+  isLoading?: boolean;
   isFavorite: boolean;
-  handleToggleFavorite: () => void;
+  onPress: () => void;
 }
 
 const AnimatedHeart = Animated.createAnimatedComponent(Svg)
 
-export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
+export function FavoriteButton({ isLoading, isFavorite, onPress }: Props) {
   const { colors } = useTheme()
   const svgHeightAnimated = useSharedValue(0)
 
@@ -34,7 +36,9 @@ export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
     }
   })
 
-  function onPress() {
+  function handlePress() {
+    if (isLoading) return
+
     svgHeightAnimated.value = 0
 
     svgHeightAnimated.value = withTiming(1, {
@@ -42,14 +46,17 @@ export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
       easing: Easing.ease
     })
 
-    handleToggleFavorite()
+    onPress()
   }
 
   return (
-    <S.Button onPress={onPress}>
-      <AnimatedHeart animatedProps={svgProps}>
-        <Path
-          d={`
+    <S.Button onPress={handlePress}>
+      {isLoading ?
+        <Loading self='center' /> :
+
+        <AnimatedHeart animatedProps={svgProps}>
+          <Path
+            d={`
             M${17.9557} 27.6243
             L17.9493 27.6302
             C17.4217 28.1091 16.6046 28.1085 16.0774 27.6228
@@ -74,11 +81,12 @@ export function FavoriteButton({ isFavorite, handleToggleFavorite }: Props) {
             L17.9557 27.6243
             L17.9557 27.6243Z
           `}
-          strokeWidth="2"
-          fill={isFavorite ? colors.yellow4 : 'none'}
-          stroke={isFavorite ? colors.yellow4 : colors.gray1}
-        />
-      </AnimatedHeart>
+            strokeWidth="2"
+            fill={isFavorite ? colors.yellow4 : 'none'}
+            stroke={isFavorite ? colors.yellow4 : colors.gray1}
+          />
+        </AnimatedHeart>}
+
     </S.Button>
   )
 }

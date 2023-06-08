@@ -2,7 +2,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export type RootStackParamList = {
   Home: undefined;
-  Profile: { userId: string };
+  Profile: { skaterId: string };
 };
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Home' | 'Profile'>;

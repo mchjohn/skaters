@@ -21,6 +21,14 @@ export const Info = styled.View`
   margin-left: ${props => props.theme.spacing.sm}px
 `
 
+export const WrapperLoading = styled.View`
+  width: ${props => props.theme.size.lg}px
+  height: ${props => props.theme.size.lg}px
+
+  alignItems: center
+  justifyContent: center
+`
+
 export const Avatar = styled.Image`
   width: ${props => props.theme.size.lg}px
   height: ${props => props.theme.size.lg}px
@@ -29,7 +37,7 @@ export const Avatar = styled.Image`
 
 export const Title = styled.Text`
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize['2xl']}px
+  fontSize: ${props => props.theme.fontSize.lg}px
   fontWeight: 700
 `
 
