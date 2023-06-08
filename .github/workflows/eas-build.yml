@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - homolog
+      - main
 jobs:
-  build:
+  build-for-android:
     name: Install and build
     runs-on: ubuntu-latest
     steps:
@@ -21,5 +21,10 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       - name: Install dependencies
         run: yarn install
+
       - name: Build on EAS
         run: eas build --platform android --profile production --non-interactive
+
+      - name: Publish to Play Store
+        run: npx eas-cli submit --platform android --latest --non-interactive
+
