@@ -13,7 +13,7 @@ import { RouteProps } from '../../../@types/routes'
 
 export function useProfile() {
   const route = useRoute<RouteProps>()
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isLiked, setIsLiked] = useState(false)
 
   const { user, isUserLoading } = useAuth()
   const { handleToggleSignInModal } = useModal()
@@ -23,17 +23,17 @@ export function useProfile() {
     return user.skatersLikes.includes(route.params?.skaterId)
   }, [route.params?.skaterId, user?.id, user?.skatersLikes])
 
-  function handleToggleFavorite() {
-    const isFavorited = isFavorite ? false : true
+  function handleToggleLike() {
+    const isFavorited = isLiked ? false : true
 
-    setIsFavorite(isFavorited)
+    setIsLiked(isFavorited)
   }
 
-  function onPress() {
+  function handleLikeOrOpenSignModal() {
     if (user?.id) {
       if (route.params?.skaterId) {
-        const value = isFavorite ? -1 : 1
-        LikesServices.likeSkater(route.params.skaterId, user.id, value, handleToggleFavorite)
+        const value = isLiked ? -1 : 1
+        LikesServices.likeSkater(route.params.skaterId, user.id, value, handleToggleLike)
       }
     } else {
       handleToggleSignInModal()
@@ -47,15 +47,15 @@ export function useProfile() {
   )
 
   useEffect(() => {
-    setIsFavorite(hasLiked)
+    setIsLiked(hasLiked)
   }, [user?.id, route?.params?.skaterId, hasLiked, user])
 
   return {
     skater,
-    isFavorite,
+    isLiked,
     isUserLoading,
     isSkaterLoading: isLoading,
-    onPress,
-    handleToggleFavorite,
+    handleToggleLike,
+    handleLikeOrOpenSignModal,
   }
 }

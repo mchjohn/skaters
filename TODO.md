@@ -1,7 +1,6 @@
 [ ] Implementar search
 
 [ ] Ícone exibir/ocultar senha no input
-[ ] Criar um README (licença MIT)
 [ ] Adicionar filtro para lista de skatistas
 
 [ ] Adicionar insta @fulaninho

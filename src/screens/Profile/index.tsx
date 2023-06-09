@@ -1,7 +1,7 @@
 import * as S from './styles'
 
+import { LikeButton } from '../../components/LikeButton'
 import { GoBackButton } from '../../components/GoBackButton'
-import { FavoriteButton } from '../../components/FavoriteButton'
 
 import { SignIn } from '../SignIn'
 import { SignUp } from '../SignUp'
@@ -14,10 +14,10 @@ import { useProfile } from './useProfile'
 export function Profile() {
   const {
     skater,
-    isFavorite,
+    isLiked,
     isUserLoading,
     isSkaterLoading,
-    onPress,
+    handleLikeOrOpenSignModal,
   } = useProfile()
 
   return (
@@ -31,7 +31,7 @@ export function Profile() {
             <S.WrapperAvatar>
               <Avatar uri={skater?.avatar} name={skater?.name} />
 
-              <FavoriteButton isLoading={isUserLoading} isFavorite={isFavorite} onPress={onPress} />
+              <LikeButton isLoading={isUserLoading} isLiked={isLiked} onPress={handleLikeOrOpenSignModal} />
             </S.WrapperAvatar>
 
             <S.Title>{skater?.name}</S.Title>
@@ -44,11 +44,9 @@ export function Profile() {
               <Info label='Patrocínios:' value={` ${skater?.sponsors?.join(', ')}`} />
             </S.WrapperInfo>
 
-            <S.Link>Última atualização: {skater?.updatedAt} - Enviar uma atualização.</S.Link>
+            <S.Link>Atualizado por Michel John em {skater?.updatedAt} - Enviar uma atualização.</S.Link>
           </S.Card>
         }
-
-
       </S.View>
 
       <SignIn />
