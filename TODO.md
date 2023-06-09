@@ -2,8 +2,6 @@
 
 [ ] Ícone exibir/ocultar senha no input
 [ ] Criar um README (licença MIT)
-[ ] Fotos públicas
-[ ] Fotos otimizadas
 [ ] Adicionar filtro para lista de skatistas
 
 [ ] Adicionar insta @fulaninho
