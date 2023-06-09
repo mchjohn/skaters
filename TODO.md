@@ -4,6 +4,7 @@
 [ ] Criar um README (licença MIT)
 [ ] Fotos públicas
 [ ] Fotos otimizadas
+[ ] Adicionar filtro para lista de skatistas
 
 [ ] Adicionar insta @fulaninho
 [ ] Componentizar SignIn e SignUp modals

@@ -7,7 +7,6 @@ import * as S from './styles'
 import { useHome } from './useHome'
 import { UserInfo } from './UserInfo'
 
-import { Filter } from '../../components/Filter'
 import { Loading } from '../../components/Loading'
 import { CardSkater } from '../../components/CardSkater'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
@@ -22,7 +21,6 @@ export function Home() {
     isLoadingSkaters,
     isFetchingNextPage,
     fetchNextPage,
-    handleSelectFilter
   } = useHome()
 
   function handleToggleModal() {
@@ -37,10 +35,6 @@ export function Home() {
           isLoading={isUserLoading}
           handleToggleModal={handleToggleModal}
         />
-
-        <S.Header>
-          <Filter onSelect={handleSelectFilter} />
-        </S.Header>
 
         <FlashList
           data={skaters?.pages?.flatMap((page) => page)}

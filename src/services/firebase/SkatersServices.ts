@@ -9,16 +9,14 @@ async function getDocumentReference(collection: string, id: string) {
   return documentRef.get()
 }
 
-async function getSkatersOrderedBy(orderBy: string) {
-  const directionStr = orderBy === 'likes' ? 'desc' : 'asc'
-
-  const query = firestore().collection('skaters').orderBy(orderBy, directionStr).limit(6)
+async function getSkatersOrderedBy() {
+  const query = firestore().collection('skaters').orderBy('likes', 'desc').limit(6)
 
   return query
 }
 
-async function getSkaters(lastItemId: string | null, orderBy: string) {
-  let query = await getSkatersOrderedBy(orderBy)
+async function getSkaters(lastItemId: string | null) {
+  let query = await getSkatersOrderedBy()
 
   if (lastItemId) {
     const lastItemDoc = await getDocumentReference('skaters', lastItemId)
