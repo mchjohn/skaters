@@ -16,7 +16,7 @@ export function useProfile() {
   const [isLiked, setIsLiked] = useState(false)
 
   const { user, isUserLoading } = useAuth()
-  const { handleToggleSignInModal } = useModal()
+  const { handleToggleSignInModal, handleToggleFormUpdateSkaterModal } = useModal()
 
   const hasLiked = useMemo(() => {
     if (!user?.id || !route.params?.skaterId || !user?.skatersLikes) return false
@@ -40,6 +40,17 @@ export function useProfile() {
     }
   }
 
+  function handleOpenSignModalOrOpenFormModal() {
+    if (user?.id) {
+      if (route.params?.skaterId) {
+        // lógica para abrir o modal de envio de atualização para o skatista em questão
+        handleToggleFormUpdateSkaterModal()
+      }
+    } else {
+      handleToggleSignInModal()
+    }
+  }
+
   const { data: skater, isLoading } = useQuery(
     [QueryKeys.SKATER],
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -57,5 +68,6 @@ export function useProfile() {
     isSkaterLoading: isLoading,
     handleToggleLike,
     handleLikeOrOpenSignModal,
+    handleOpenSignModalOrOpenFormModal,
   }
 }

@@ -57,6 +57,12 @@ export const TextBold = styled(Label)`
   fontWeight: 700
 `
 
+export const Footer = styled.Pressable`
+  gap: 1px
+  flexWrap: wrap
+  flexDirection: row
+`
+
 export const Link = styled.Text`
   color: ${props => props.theme.colors.gray1}
   fontSize: ${props => props.theme.fontSize.xs}px

@@ -6,6 +6,7 @@ import { GoBackButton } from '../../components/GoBackButton'
 import { SignIn } from '../SignIn'
 import { SignUp } from '../SignUp'
 import { Loading } from '../../components/Loading'
+import { FormUpdateSkater } from '../FormUpdateSkater'
 
 import { Info } from './Info'
 import { Avatar } from './Avatar'
@@ -18,6 +19,7 @@ export function Profile() {
     isUserLoading,
     isSkaterLoading,
     handleLikeOrOpenSignModal,
+    handleOpenSignModalOrOpenFormModal
   } = useProfile()
 
   return (
@@ -44,13 +46,17 @@ export function Profile() {
               <Info label='Patrocínios:' value={` ${skater?.sponsors?.join(', ')}`} />
             </S.WrapperInfo>
 
-            <S.Link>Atualizado por Michel John em {skater?.updatedAt} - Enviar uma atualização.</S.Link>
+            <S.Footer onPress={handleOpenSignModalOrOpenFormModal}>
+              <S.Link>Michel John atualizou em {skater?.updatedAt}</S.Link>
+              <S.Link>- Enviar atualização.</S.Link>
+            </S.Footer>
           </S.Card>
         }
       </S.View>
 
       <SignIn />
       <SignUp />
+      <FormUpdateSkater />
     </>
   )
 }
