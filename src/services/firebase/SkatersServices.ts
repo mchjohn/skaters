@@ -3,20 +3,25 @@ import firestore from '@react-native-firebase/firestore'
 import { ISkater } from '../../interfaces/skater'
 import SkatersMapper from '../mappers/SkatersMapper'
 
-async function getDocRef(collection: string, id: string) {
-  const skaterDocRef = firestore().collection(collection).doc(id)
+async function getDocumentReference(collection: string, id: string) {
+  const documentRef = firestore().collection(collection).doc(id)
 
-  return skaterDocRef.get()
+  return documentRef.get()
+}
+
+async function getSkatersOrderedBy(orderBy: string) {
+  const directionStr = orderBy === 'likes' ? 'desc' : 'asc'
+
+  const query = firestore().collection('skaters').orderBy(orderBy, directionStr).limit(6)
+
+  return query
 }
 
 async function getSkaters(lastItemId: string | null, orderBy: string) {
-  let query = firestore()
-    .collection('skaters')
-    .orderBy(orderBy)
-    .limit(5)
+  let query = await getSkatersOrderedBy(orderBy)
 
-  if (lastItemId !== undefined && lastItemId !== null) {
-    const lastItemDoc = await firestore().collection('skaters').doc(lastItemId).get()
+  if (lastItemId) {
+    const lastItemDoc = await getDocumentReference('skaters', lastItemId)
 
     if (lastItemDoc.exists) {
       query = query.startAfter(lastItemDoc)
@@ -28,7 +33,7 @@ async function getSkaters(lastItemId: string | null, orderBy: string) {
   const snapshot = await query.get()
   const skaters: ISkater[] = []
 
-  snapshot.docs.map(doc => {
+  snapshot.docs.forEach(doc => {
     const skater = SkatersMapper.toDomain(doc.id, doc.data() as ISkater)
     skaters.push(skater)
   })
@@ -37,7 +42,7 @@ async function getSkaters(lastItemId: string | null, orderBy: string) {
 }
 
 async function getSkaterById(id: string) {
-  const docSnapshot = await getDocRef('skaters', id)
+  const docSnapshot = await getDocumentReference('skaters', id)
 
   if (docSnapshot.exists) {
     const skater = docSnapshot.data()

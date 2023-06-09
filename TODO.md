@@ -1,9 +1,11 @@
 [ ] Implementar search
 
-[ ] Ajustar perfil do usuário
+[ ] Ícone exibir/ocultar senha no input
+[ ] Criar um README (licença MIT)
+[ ] Fotos públicas
+[ ] Fotos otimizadas
+
 [ ] Adicionar insta @fulaninho
-[ ] Adicionar loadings no app
-[ ] Icone exibir/ocultar senha no input
 [ ] Componentizar SignIn e SignUp modals
 [ ] Quando usuário não estiver logado e
      clicar para favoritar um Skater salvar
