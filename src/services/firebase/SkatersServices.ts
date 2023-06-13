@@ -10,7 +10,7 @@ async function getDocumentReference(collection: string, id: string) {
 }
 
 async function getSkatersOrderedBy() {
-  const query = firestore().collection('skaters').orderBy('likes', 'desc').limit(6)
+  const query = firestore().collection('skaters').where('approved', '==', true).orderBy('likes', 'desc').limit(6)
 
   return query
 }

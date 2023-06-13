@@ -1,11 +1,13 @@
 [ ] Implementar search
 
+[ ] Ao cadastrar skatista salvar no user o id do skatista cadastrado
+[ ] Ao cadastrar skatista salvar no skatista o id do user que o cadastrou
+
 [ ] Adicionar insta @fulaninho
 [ ] Ícone exibir/ocultar senha no input
 [ ] Adicionar filtro para lista de skatistas
 [ ] Ícone informando que nem todas as informações estão corretas
 [ ] Na tela de perfil. "Skatistas cadastrados"
-[ ] Ocultar do app skatistas com a flag "approved" === false
 
 [ ] Componentizar SignIn e SignUp modals
 [ ] Quando usuário não estiver logado e
