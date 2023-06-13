@@ -46,7 +46,9 @@ export function Profile() {
               <Info label='Patrocínios:' value={` ${skater?.sponsors?.join(', ')}`} />
             </S.WrapperInfo>
 
-            <S.Footer onPress={handleOpenSignModalOrOpenFormModal}>
+            {/* TODO: Implementar update onPress={handleOpenSignModalOrOpenFormModal} */}
+            <S.Footer>
+              {/* TODO: Definir quem fez a atualização */}
               <S.Link>Michel John atualizou em {skater?.updatedAt}</S.Link>
               <S.Link>- Enviar atualização.</S.Link>
             </S.Footer>

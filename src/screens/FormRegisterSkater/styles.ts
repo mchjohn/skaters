@@ -24,17 +24,19 @@ export const ModalView = styled.View`
   borderRadius: ${props => props.theme.radii.md}px
 `
 
-export const Title = styled.Text`
-  margin-top: ${props => props.theme.spacing.xs}px
+export const Header = styled.View`
+  width: ${props => props.theme.size.full}
   margin-bottom: ${props => props.theme.spacing.md}px
 
-  align-self: flex-start
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.sm}px
+  flexDirection: row
+  justify-content: space-between
 `
 
-export const Info = styled.View`
-  margin-vertical: ${props => props.theme.spacing.xl}px
+export const Title = styled.Text`
+  color: ${props => props.theme.colors.gray1}
+  fontSize: ${props => props.theme.fontSize.sm}px
+
+  max-width: 280px
 `
 
 export const Text = styled.Text`
@@ -61,10 +63,10 @@ export const Button = styled.Pressable`
 
 export const Form = styled.ScrollView`
   width: ${props => props.theme.size.full}
+  padding-horizontal: ${props => props.theme.spacing.md}px
 
-  padding: ${props => props.theme.spacing.md}px
-  background-color: ${props => props.theme.colors.gray8}
   borderRadius: ${props => props.theme.radii.md}px
+  background-color: ${props => props.theme.colors.gray8}
 `
 
 export const Input = styled.TextInput.attrs({
@@ -72,7 +74,7 @@ export const Input = styled.TextInput.attrs({
 })`
   width: ${props => props.theme.size.full}
   height: 52px
-  margin-top: ${props => props.theme.spacing.lg}px
+  margin-top: ${props => props.theme.spacing.md}px
   padding-left: ${props => props.theme.spacing.md}px
 
   color: ${props => props.theme.colors.gray1}
@@ -80,18 +82,4 @@ export const Input = styled.TextInput.attrs({
 
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray9}
-`
-
-export const TextLink = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
-`
-
-export const LabelInput = styled.Text`
-  alignSelf: flex-start
-  margin-top: ${props => props.theme.spacing.xs}px
-  margin-left: ${props => props.theme.spacing.xs}px
-
-  color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.xs}px
 `

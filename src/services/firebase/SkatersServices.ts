@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore'
 
-import { ISkater } from '../../interfaces/skater'
 import SkatersMapper from '../mappers/SkatersMapper'
+import { ISkater, RegisterSkater } from '../../interfaces/skater'
 
 async function getDocumentReference(collection: string, id: string) {
   const documentRef = firestore().collection(collection).doc(id)
@@ -49,4 +49,12 @@ async function getSkaterById(id: string) {
   }
 }
 
-export { getSkaters, getSkaterById }
+async function registerSkater(data: RegisterSkater) {
+  const skater = SkatersMapper.toDomainRegister(data)
+
+  const collectionReference = firestore().collection('skaters')
+
+  collectionReference.add(skater)
+}
+
+export { getSkaters, getSkaterById, registerSkater }

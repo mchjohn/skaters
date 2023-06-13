@@ -4,12 +4,15 @@ import { FlashList } from '@shopify/flash-list'
 import { useAuth } from '../../contexts/AuthContext'
 
 import * as S from './styles'
+import { Header } from './Header'
 import { useHome } from './useHome'
 import { UserInfo } from './UserInfo'
 
 import { Loading } from '../../components/Loading'
 import { CardSkater } from '../../components/CardSkater'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
+import { FormRegisterSkater } from '../FormRegisterSkater'
+import { SuccessRegisterSkater } from '../SuccessRegisterSkater'
 
 export function Home() {
   const [modalVisible, setModalVisible] = useState(false)
@@ -30,11 +33,13 @@ export function Home() {
   return (
     <>
       <S.View>
-        <UserInfo
-          name={user?.name}
-          isLoading={isUserLoading}
-          handleToggleModal={handleToggleModal}
-        />
+        <Header>
+          <UserInfo
+            name={user?.name}
+            isLoading={isUserLoading}
+            handleToggleModal={handleToggleModal}
+          />
+        </Header>
 
         <FlashList
           data={skaters?.pages?.flatMap((page) => page)}
@@ -57,6 +62,9 @@ export function Home() {
           handleToggleModal={handleToggleModal}
         />
       }
+
+      <FormRegisterSkater />
+      <SuccessRegisterSkater />
     </>
   )
 }

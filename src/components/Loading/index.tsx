@@ -7,6 +7,7 @@ type Props = {
   my?: number
   size?: 'small' | 'large'
   self?: 'auto' | FlexAlignType
+  color?: string // TODO: Melhorar
 }
 
 const defaultMargin = theme.spacing.sm
@@ -15,12 +16,13 @@ export function Loading({
   mx = defaultMargin,
   my = defaultMargin,
   size = 'small',
-  self = 'flex-start'
+  self = 'flex-start',
+  color = theme.colors.yellow4
 }: Props) {
   return (
     <ActivityIndicator
       size={size}
-      color={theme.colors.yellow4}
+      color={color}
       style={{
         alignSelf: self,
         marginHorizontal: mx,
