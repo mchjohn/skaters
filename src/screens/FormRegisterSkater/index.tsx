@@ -106,12 +106,16 @@ export function FormRegisterSkater() {
               value={formData.instagram}
               onChangeText={formData.setInstagram}
             />
-            {/* TODO: Aplicar mascara */}
-            <S.Input
+            <S.MaskedInput
               editable={isDisabled}
               maxLength={10}
               placeholder='Data das informações'
-              value={formData.updatedAt}
+              keyboardType='numeric'
+              type='data'
+              mask="99/99/9999"
+              options={{
+                dateFormat: 'DD-MM-YYYY'
+              }}
               onChangeText={formData.setUpdatedAt}
             />
 
