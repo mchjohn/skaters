@@ -29,7 +29,6 @@ export function useHome() {
 
   function handleOpenSignOrFormRegisterModal() {
     if (user?.id) {
-      // TODO: lógica para abrir o modal de envio de atualização para o skatista em questão
       handleToggleFormRegisterSkaterModal()
     } else {
       handleToggleSignInModal()
@@ -42,6 +41,7 @@ export function useHome() {
 
   return {
     skaters,
+    alignEnd: !user?.id,
     hasNextPage,
     isLoadingSkaters,
     isFetchingNextPage,

@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { ReactNode } from 'react'
 
 import * as S from './styles'
+
 import { useHome } from '../useHome'
 
 import { RFValue } from '../../../utils/responsive_fontsize'
@@ -10,10 +11,10 @@ import { RFValue } from '../../../utils/responsive_fontsize'
 export function Header({ children }: { children: ReactNode}) {
   const { colors } = useTheme()
 
-  const { handleOpenSignOrFormRegisterModal } = useHome()
+  const { alignEnd, handleOpenSignOrFormRegisterModal } = useHome()
 
   return (
-    <S.View>
+    <S.View alignEnd={alignEnd}>
       {children}
 
       <Ionicons

@@ -8,6 +8,7 @@ import { Header } from './Header'
 import { useHome } from './useHome'
 import { UserInfo } from './UserInfo'
 
+import { SignIn } from '../SignIn'
 import { Loading } from '../../components/Loading'
 import { CardSkater } from '../../components/CardSkater'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
@@ -65,6 +66,7 @@ export function Home() {
 
       <FormRegisterSkater />
       <SuccessRegisterSkater />
+      <SignIn />
     </>
   )
 }

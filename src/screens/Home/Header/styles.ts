@@ -1,9 +1,15 @@
 import styled from 'styled-components/native'
 
-export const View = styled.View`
+type Props ={
+  alignEnd?: boolean,
+}
+
+export const View = styled.View<Props>`
+  width: ${props => props.theme.size.full}
+
   alignItems: center
   flexDirection: row
-  justifyContent: space-between
+  justifyContent: ${props => props.alignEnd ? 'flex-end' : 'space-between'}
 `
 
 export const Inline = styled.View`

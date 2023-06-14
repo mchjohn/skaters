@@ -29,7 +29,7 @@ export function SignIn() {
         <ModalCloseButton onPress={handleToggleSignInModal} />
 
         <S.ModalView>
-          <S.Title>Entre com sua conta para realizar essa trick 🛹</S.Title>
+          <S.Title>Entre com sua conta para continuar 🛹</S.Title>
 
           <S.Form>
             <S.Input
