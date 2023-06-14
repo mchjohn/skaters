@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
 
+import theme from '../../styles/theme'
+
 export const Modal = styled.Modal.attrs({
   animationType: 'slide',
   transparent: true
@@ -69,7 +71,7 @@ export const Form = styled.View`
 `
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: '#FAFAFA'
+  placeholderTextColor: theme.colors.gray1
 })`
   width: ${props => props.theme.size.full}
   height: 52px

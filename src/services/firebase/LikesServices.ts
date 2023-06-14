@@ -6,14 +6,14 @@ async function getDocRef(collection: string, id: string) {
   return docRef
 }
 
-async function likeSkater(skaterId: string, userId: string, value: 1 | -1, handleToggleFavorite: () => void) {
+async function likeSkater(skaterId: string, userId: string, value: 1 | -1, handleToggleLike: () => void) {
   const docRefUser = await getDocRef('users', userId)
   const docRefSkater = await getDocRef('skaters', skaterId)
 
   // Atualiza a quantidade de likes no skatista
   docRefSkater.update({
     likes: firestore.FieldValue.increment(value)
-  }).then(() => handleToggleFavorite())
+  }).then(() => handleToggleLike())
 
   // Salva o ID do skater no usuário
   if (value === 1) {

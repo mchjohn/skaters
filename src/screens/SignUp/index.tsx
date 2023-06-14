@@ -30,7 +30,7 @@ export function SignUp() {
           <ModalCloseButton onPress={handleToggleSignUpModal} />
 
           <S.ModalView>
-            <S.Title>Olá, crie uma conta para curtir 🛹</S.Title>
+            <S.Title>Crie uma conta para realizar essa trick 🛹</S.Title>
 
             <S.Form>
               <S.Input

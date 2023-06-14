@@ -4,4 +4,5 @@ export interface IUser {
   email: string | null;
   createdAt?: string; // implementar
   skatersLikes?: string[];
+  createdSkaters?: string[];
 }
