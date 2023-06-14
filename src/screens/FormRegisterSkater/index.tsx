@@ -4,6 +4,7 @@ import Toast from 'react-native-toast-message'
 import * as S from './styles'
 import { useFormRegisterSkater } from './useFormRegisterSkater'
 
+import { Select } from '../../components/Select'
 import { Loading } from '../../components/Loading'
 import { ModalCloseButton } from '../../components/ModalCloseButton'
 
@@ -48,6 +49,7 @@ export function FormRegisterSkater() {
               editable={isDisabled}
               maxLength={2}
               placeholder='Idade'
+              keyboardType='numeric'
               value={formData.age}
               onChangeText={formData.setAge}
             />
@@ -75,22 +77,22 @@ export function FormRegisterSkater() {
               value={formData.uf}
               onChangeText={formData.setUf}
             />
-            <S.Input
-              editable={isDisabled}
-              autoCapitalize='words'
-              maxLength={12}
-              placeholder='Nível (Profissional ou Amador)'
-              value={formData.level}
-              onChangeText={formData.setLevel}
-            />
-            <S.Input
-              editable={isDisabled}
-              autoCapitalize='words'
-              maxLength={7}
-              placeholder='Base (Regular ou Goofy)'
-              value={formData.stance}
-              onChangeText={formData.setStance}
-            />
+
+            <S.WrapperSelect>
+              <Select
+                data={['Profissional', 'Amador']}
+                color={formData.level && colors.gray1}
+                defaultButtonText='Categoria'
+                onSelect={formData.setLevel}
+              />
+              <Select
+                data={['Regular', 'Goofy']}
+                color={formData.stance && colors.gray1}
+                defaultButtonText='Base'
+                onSelect={formData.setStance}
+              />
+            </S.WrapperSelect>
+
             <S.Input
               editable={isDisabled}
               autoCapitalize='words'

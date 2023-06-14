@@ -3,6 +3,7 @@ import { RFValue } from '../utils/responsive_fontsize'
 const Theme = {
   colors: {
     gray1: '#FAFAFA',
+    gray4: '#8c8c8c',
     gray8: '#282828',
     gray9: '#1A1A1A',
 
@@ -22,6 +23,7 @@ const Theme = {
     lg: RFValue(96),
     xl: RFValue(160),
     full: '100%',
+    half: '50%',
   },
   radii: {
     sm: 4,

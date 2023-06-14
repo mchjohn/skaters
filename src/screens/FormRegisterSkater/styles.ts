@@ -71,7 +71,7 @@ export const Form = styled.ScrollView`
 `
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: '#FAFAFA'
+  placeholderTextColor: '#8c8c8c'
 })`
   width: ${props => props.theme.size.full}
   height: 52px
@@ -86,7 +86,7 @@ export const Input = styled.TextInput.attrs({
 `
 
 export const MaskedInput = styled(MaskedTextInput).attrs({
-  placeholderTextColor: '#FAFAFA'
+  placeholderTextColor: '#8c8c8c'
 })`
   width: ${props => props.theme.size.full}
   height: 52px
@@ -98,4 +98,11 @@ export const MaskedInput = styled(MaskedTextInput).attrs({
 
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray9}
+`
+
+export const WrapperSelect = styled.View`
+  width: ${props => props.theme.size.full}
+
+  flexDirection: row
+  gap: ${props => props.theme.spacing.sm}px
 `
