@@ -48,9 +48,9 @@ export function useFormRegisterSkater() {
     setInstagram('')
     setUpdatedAt('')
 
-    handleToggleRegisterSkaterSuccessModal()
-
     handleToggleFormRegisterSkaterModal()
+
+    handleToggleRegisterSkaterSuccessModal()
   }
 
   const {
@@ -69,7 +69,7 @@ export function useFormRegisterSkater() {
       sponsors,
       instagram,
       updatedAt,
-      updater: {
+      creator: {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         id: user!.id as string,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

@@ -12,6 +12,7 @@ class SkatersMapper {
       stance: persistSkater.stance,
       address: persistSkater.address,
       updater: persistSkater.updater,
+      creator: persistSkater.creator,
       approved: persistSkater.approved,
       sponsors: persistSkater.sponsors,
       instagram: persistSkater.instagram,
@@ -28,16 +29,16 @@ class SkatersMapper {
       level: data.level,
       likes: 0,
       stance: data.stance,
+      creator: data.creator,
+      approved: false,
+      sponsors: data.sponsors.split(','),
+      instagram: data.instagram,
+      updatedAt: data.updatedAt,
       address: {
         uf: data.uf,
         state: data.state,
         country: data.country,
       },
-      updater: data.updater,
-      approved: false,
-      sponsors: data.sponsors.split(','),
-      instagram: data.instagram,
-      updatedAt: data.updatedAt,
     }
 
     return skater

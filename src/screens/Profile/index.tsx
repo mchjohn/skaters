@@ -47,13 +47,15 @@ export function Profile() {
             </S.WrapperInfo>
 
             {/* TODO: Implementar update onPress={handleOpenSignModalOrOpenFormModal} */}
-            <S.Footer>
-              {/* TODO: Definir quem fez a atualização */}
-              <S.Link>{skater?.updater.name} atualizou em {skater?.updatedAt}</S.Link>
-              <S.Link>- Enviar atualização.</S.Link>
-            </S.Footer>
+            {/* TODO: Definir quem fez a atualização */}
+            {/* <S.Footer>
+              {skater?.updater &&
+                <S.Link>{skater?.updater.name} atualizou em {skater?.updatedAt} - </S.Link>
+              }
+              <S.Link>Enviar atualização.</S.Link>
+            </S.Footer> */}
 
-            <S.Link>Cadastrado por {skater?.updater.name} em {skater?.updatedAt.slice(6)}</S.Link>
+            <S.Link>Cadastrado por {skater?.creator.name} em {skater?.updatedAt.slice(6)}</S.Link>
           </S.Card>
         }
       </S.View>
