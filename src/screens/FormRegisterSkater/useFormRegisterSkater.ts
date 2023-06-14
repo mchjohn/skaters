@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 
 import * as SkatersServices from '../../services/firebase/SkatersServices'
 import { useModal } from '../../contexts/ModalContext'
+import { useAuth } from '../../contexts/AuthContext'
 
 export function useFormRegisterSkater() {
   const [uf, setUf] = useState('')
@@ -16,6 +17,7 @@ export function useFormRegisterSkater() {
   const [instagram, setInstagram] = useState('')
   const [updatedAt, setUpdatedAt] = useState('')
 
+  const { user } = useAuth()
   const {
     modalFormRegisterSkaterIsVisible,
     handleToggleFormRegisterSkaterModal,
@@ -55,6 +57,7 @@ export function useFormRegisterSkater() {
     mutate: handleUpdateSkater,
     isLoading
   } = useMutation(() => SkatersServices.registerSkater(
+    user?.id as string,
     {
       uf,
       age,
@@ -66,6 +69,12 @@ export function useFormRegisterSkater() {
       sponsors,
       instagram,
       updatedAt,
+      updater: {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        id: user!.id as string,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        name: user!.name as string,
+      }
     }
   ), { onSuccess: resetForm })
 

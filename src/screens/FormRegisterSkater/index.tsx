@@ -109,7 +109,7 @@ export function FormRegisterSkater() {
             {/* TODO: Aplicar mascara */}
             <S.Input
               editable={isDisabled}
-              maxLength={7}
+              maxLength={10}
               placeholder='Data das informações'
               value={formData.updatedAt}
               onChangeText={formData.setUpdatedAt}

@@ -49,12 +49,25 @@ async function getSkaterById(id: string) {
   }
 }
 
-async function registerSkater(data: RegisterSkater) {
+// TODO: Refatorar para deixar dinâmico
+async function updateUser(userId: string, skaterId: string) {
+  const collectionReference = firestore().collection('users').doc(userId)
+
+  collectionReference.update({
+    createdSkaters: firestore.FieldValue.arrayUnion(skaterId)
+  })
+}
+
+async function registerSkater(userId: string, data: RegisterSkater) {
   const skater = SkatersMapper.toDomainRegister(data)
 
   const collectionReference = firestore().collection('skaters')
 
-  collectionReference.add(skater)
+  const response = await collectionReference.add(skater)
+
+  const skaterId = (await response.get()).id
+
+  updateUser(userId, skaterId)
 }
 
 export { getSkaters, getSkaterById, registerSkater }

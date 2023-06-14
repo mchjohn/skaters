@@ -13,6 +13,10 @@ export interface ISkater {
   stance: string
   likes?: number
   address: Address
+  updater: {
+    id: string
+    name: string
+  }
   approved: boolean
   sponsors: string[]
   updatedAt: string
@@ -27,6 +31,10 @@ export type RegisterSkater = {
   level: string
   stance: string
   country: string
+  updater: {
+    id: string
+    name: string
+  }
   sponsors: string
   updatedAt: string
   instagram: string

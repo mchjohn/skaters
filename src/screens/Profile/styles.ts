@@ -8,8 +8,12 @@ export const View = styled.View`
 
 export const Card = styled.View`
   flex: 1
-  padding: ${props => props.theme.spacing.md}px
+
   margin-top: ${props => props.theme.spacing.md}px
+  padding-top: ${props => props.theme.spacing.md}px
+  padding-bottom: ${props => props.theme.spacing.sm}px
+  padding-horizontal: ${props => props.theme.spacing.md}px
+
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray8}
 `
