@@ -3,27 +3,19 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { QueryKeys } from '../../constants/QueryKeys'
 
-import { SelectedItemProps } from '../../components/Filter'
-
+import { useAuth } from '../../contexts/AuthContext'
+import { useModal } from '../../contexts/ModalContext'
 import * as SkatersServices from '../../services/firebase/SkatersServices'
 
 export function useHome() {
-  let selectedFilter: SelectedItemProps = 'name'
-
-  function handleSelectFilter(filter: SelectedItemProps) {
-    selectedFilter = filter
-    refetch()
-  }
-
   const {
     data: skaters,
     isLoading: isLoadingSkaters,
     hasNextPage,
     isFetchingNextPage,
-    refetch,
     fetchNextPage,
   } = useInfiniteQuery([QueryKeys.SKATERS], ({ pageParam }) =>
-    SkatersServices.getSkaters(pageParam, selectedFilter),
+    SkatersServices.getSkaters(pageParam),
   {
     getNextPageParam: (lastPage) => {
       const lastItem = lastPage[lastPage.length - 1]
@@ -32,9 +24,28 @@ export function useHome() {
   }
   )
 
+  const { user } = useAuth()
+  const { handleToggleSignInModal, handleToggleFormRegisterSkaterModal } = useModal()
+
+  function handleOpenSignOrFormRegisterModal() {
+    if (user?.id) {
+      handleToggleFormRegisterSkaterModal()
+    } else {
+      handleToggleSignInModal()
+    }
+  }
+
   useEffect(() => {
     fetchNextPage()
   }, []) // eslint-disable-line
 
-  return { skaters, hasNextPage, isLoadingSkaters, isFetchingNextPage, fetchNextPage, handleSelectFilter }
+  return {
+    skaters,
+    alignEnd: !user?.id,
+    hasNextPage,
+    isLoadingSkaters,
+    isFetchingNextPage,
+    fetchNextPage,
+    handleOpenSignOrFormRegisterModal
+  }
 }

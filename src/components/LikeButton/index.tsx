@@ -13,14 +13,14 @@ import * as S from './styles'
 import { Loading } from '../Loading'
 
 type Props = {
+  isLiked: boolean;
   isLoading?: boolean;
-  isFavorite: boolean;
   onPress: () => void;
 }
 
 const AnimatedHeart = Animated.createAnimatedComponent(Svg)
 
-export function FavoriteButton({ isLoading, isFavorite, onPress }: Props) {
+export function LikeButton({ isLoading, isLiked, onPress }: Props) {
   const { colors } = useTheme()
   const svgHeightAnimated = useSharedValue(0)
 
@@ -82,8 +82,8 @@ export function FavoriteButton({ isLoading, isFavorite, onPress }: Props) {
             L17.9557 27.6243Z
           `}
             strokeWidth="2"
-            fill={isFavorite ? colors.yellow4 : 'none'}
-            stroke={isFavorite ? colors.yellow4 : colors.gray1}
+            fill={isLiked ? colors.yellow4 : 'none'}
+            stroke={isLiked ? colors.yellow4 : colors.gray1}
           />
         </AnimatedHeart>}
 

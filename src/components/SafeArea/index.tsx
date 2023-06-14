@@ -1,3 +1,4 @@
+import { useTheme } from 'styled-components'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { LayoutChangeEvent, View } from 'react-native'
 
@@ -7,6 +8,7 @@ type Props = {
 }
 
 export function SafeArea({ children, onLayoutRootView }: Props) {
+  const { colors } = useTheme()
   const insets = useSafeAreaInsets()
 
   return (
@@ -14,7 +16,7 @@ export function SafeArea({ children, onLayoutRootView }: Props) {
       onLayout={onLayoutRootView}
       style={{
         flex: 1,
-        backgroundColor: '#1A1A1A',
+        backgroundColor: colors.gray9,
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
         paddingLeft: insets.left,

@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { MaskedTextInput } from 'react-native-mask-text'
 
 import theme from '../../styles/theme'
 
@@ -26,17 +27,19 @@ export const ModalView = styled.View`
   borderRadius: ${props => props.theme.radii.md}px
 `
 
-export const Title = styled.Text`
-  margin-bottom: ${props => props.theme.spacing.xl}px
+export const Header = styled.View`
+  width: ${props => props.theme.size.full}
+  margin-bottom: ${props => props.theme.spacing.md}px
 
-  align-self: flex-start
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.lg}px
-  fontWeight: 700
+  flexDirection: row
+  justify-content: space-between
 `
 
-export const Info = styled.View`
-  margin-vertical: ${props => props.theme.spacing.xl}px
+export const Title = styled.Text`
+  color: ${props => props.theme.colors.gray1}
+  fontSize: ${props => props.theme.fontSize.sm}px
+
+  max-width: 280px
 `
 
 export const Text = styled.Text`
@@ -48,7 +51,8 @@ export const Text = styled.Text`
 export const Button = styled.Pressable`
   width: ${props => props.theme.size.full}
 
-  margin-top: ${props => props.theme.spacing.xl}px
+  margin-top: ${props => props.theme.spacing.md}px
+  margin-bottom: ${props => props.theme.spacing.xl}px
 
   padding-vertical: ${props => props.theme.spacing.sm}px
   padding-horizontal: ${props => props.theme.spacing.sm}px
@@ -60,22 +64,20 @@ export const Button = styled.Pressable`
   background-color: ${props => props.theme.colors.yellow4}
 `
 
-export const Form = styled.View`
+export const Form = styled.ScrollView`
   width: ${props => props.theme.size.full}
-  alignItems: center
-  justifyContent: center
+  padding-horizontal: ${props => props.theme.spacing.md}px
 
-  padding: ${props => props.theme.spacing.md}px
-  background-color: ${props => props.theme.colors.gray8}
   borderRadius: ${props => props.theme.radii.md}px
+  background-color: ${props => props.theme.colors.gray8}
 `
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: theme.colors.gray1
+  placeholderTextColor: theme.colors.gray2
 })`
   width: ${props => props.theme.size.full}
   height: 52px
-  margin-top: ${props => props.theme.spacing.lg}px
+  margin-top: ${props => props.theme.spacing.md}px
   padding-left: ${props => props.theme.spacing.md}px
 
   color: ${props => props.theme.colors.gray1}
@@ -85,32 +87,24 @@ export const Input = styled.TextInput.attrs({
   background-color: ${props => props.theme.colors.gray9}
 `
 
-export const ButtonOutline = styled.Pressable`
+export const MaskedInput = styled(MaskedTextInput).attrs({
+  placeholderTextColor: theme.colors.gray2
+})`
   width: ${props => props.theme.size.full}
+  height: 52px
+  margin-top: ${props => props.theme.spacing.md}px
+  padding-left: ${props => props.theme.spacing.md}px
 
-  margin-top: ${props => props.theme.spacing.xl}px
-
-  padding-vertical: ${props => props.theme.spacing.sm}px
-  padding-horizontal: ${props => props.theme.spacing.sm}px
-
-  alignItems: center
-  justifyContent: center
-
-  borderWidth: 0.5px
-  borderColor: ${props => props.theme.colors.gray1}
-  borderRadius: ${props => props.theme.radii.md}px
-`
-
-export const TextLink = styled.Text`
   color: ${props => props.theme.colors.gray1}
   fontSize: ${props => props.theme.fontSize.md}px
+
+  borderRadius: ${props => props.theme.radii.md}px
+  background-color: ${props => props.theme.colors.gray9}
 `
 
-export const LabelInput = styled.Text`
-  alignSelf: flex-start
-  margin-top: ${props => props.theme.spacing.xs}px
-  margin-left: ${props => props.theme.spacing.xs}px
+export const WrapperSelect = styled.View`
+  width: ${props => props.theme.size.full}
 
-  color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.xs}px
+  flexDirection: row
+  gap: ${props => props.theme.spacing.sm}px
 `

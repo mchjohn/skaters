@@ -18,6 +18,7 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
   const { colors } = useTheme()
 
   const amountLikes = user?.skatersLikes?.length ?? 0
+  const amountCreated = user?.createdSkaters?.length ?? 0
 
   function handleSignOut() {
     UsersServices.signOut()
@@ -43,7 +44,10 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
           </S.Info>
 
           <S.Text>
-            Você curtiu {amountLikes} skatistas nesse rolê
+            Skatistas curtidos: <S.Text style={{ color: colors.yellow4 }}>{amountLikes}</S.Text>
+          </S.Text>
+          <S.Text>
+            Skatistas cadastrados: <S.Text style={{ color: colors.yellow4 }}>{amountCreated}</S.Text>
           </S.Text>
         </S.ModalView>
 
