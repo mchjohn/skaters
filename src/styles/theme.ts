@@ -3,7 +3,7 @@ import { RFValue } from '../utils/responsive_fontsize'
 const Theme = {
   colors: {
     gray1: '#FAFAFA',
-    gray4: '#8c8c8c',
+    gray2: '#BFBFBF',
     gray8: '#282828',
     gray9: '#1A1A1A',
 

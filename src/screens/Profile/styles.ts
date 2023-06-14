@@ -36,9 +36,17 @@ export const LoadingAvatar = styled.View`
   borderRadius: ${props => props.theme.radii.md}px
 `
 
-export const WrapperInfo = styled.View`
+export const WrapperText = styled.View``
+
+export const Wrapper = styled.View`
   flex: 1
-  margin-top: ${props => props.theme.spacing.md}px
+`
+
+export const InlineView = styled.View`
+  flexDirection: row
+  alignItems: center
+  justifyContent: space-between
+
   margin-bottom: ${props => props.theme.spacing.md}px
 `
 

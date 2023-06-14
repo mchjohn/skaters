@@ -19,7 +19,7 @@ export function Select({
 }: Props) {
   const { radii, colors, fontSize, size, spacing } = useTheme()
 
-  const buttonTextColor = color ? color : colors.gray4
+  const buttonTextColor = color ? color : colors.gray2
 
   return (
     <SelectDropdown

@@ -1,3 +1,5 @@
+import { useTheme } from 'styled-components'
+
 import * as S from './styles'
 
 import { LikeButton } from '../../components/LikeButton'
@@ -13,6 +15,7 @@ import { Avatar } from './Avatar'
 import { useProfile } from './useProfile'
 
 export function Profile() {
+  const { colors } = useTheme()
   const {
     skater,
     isLiked,
@@ -22,6 +25,8 @@ export function Profile() {
     handleOpenSignModalOrOpenFormModal
   } = useProfile()
 
+  const amountLikes = `${skater?.likes} ${skater?.likes === 1 ? 'like' : 'likes'}`
+
   return (
     <>
       <S.View>
@@ -30,21 +35,58 @@ export function Profile() {
         {isSkaterLoading ?
           <Loading self='center' size='large' my={60} /> :
           <S.Card>
-            <S.WrapperAvatar>
-              <Avatar uri={skater?.avatar} name={skater?.name} />
+            <S.Wrapper>
+              <S.WrapperAvatar>
+                <Avatar uri={skater?.avatar} name={skater?.name} />
 
-              <LikeButton isLoading={isUserLoading} isLiked={isLiked} onPress={handleLikeOrOpenSignModal} />
-            </S.WrapperAvatar>
+                <LikeButton
+                  isLoading={isUserLoading}
+                  isLiked={isLiked}
+                  onPress={handleLikeOrOpenSignModal}
+                />
+              </S.WrapperAvatar>
 
-            <S.Title>{skater?.name}</S.Title>
+              <S.InlineView>
+                <S.WrapperText>
+                  <S.Title>{skater?.name}</S.Title>
+                  <S.TextBold style={{ color: colors.gray2 }}>
+                    {skater?.address.state}, {skater?.address.country}
+                  </S.TextBold>
+                </S.WrapperText>
 
-            <S.WrapperInfo>
-              <Info label='Local:' value={` ${skater?.address.state}, ${skater?.address.country}`} />
-              <Info label='Idade:' value={` ${skater?.age}`} />
-              <Info label='Status:' value={` ${skater?.level}`} />
-              <Info label='Stance:' value={` ${skater?.stance}`} />
-              <Info label='Patrocínios:' value={` ${skater?.sponsors?.join(', ')}`} />
-            </S.WrapperInfo>
+                <S.Link style={{ color: colors.gray2, fontWeight: '900' }}>
+                  {amountLikes}
+                </S.Link>
+              </S.InlineView>
+
+              <S.InlineView>
+                <S.WrapperText>
+                  <S.Label>Idade:</S.Label>
+                  <S.TextBold>{skater?.age}</S.TextBold>
+                </S.WrapperText>
+
+                <S.WrapperText>
+                  <S.Label>Categoria:</S.Label>
+                  <S.TextBold>{skater?.level}</S.TextBold>
+                </S.WrapperText>
+
+                <S.WrapperText>
+                  <S.Label>Base:</S.Label>
+                  <S.TextBold>{skater?.stance}</S.TextBold>
+                </S.WrapperText>
+
+                <S.WrapperText>
+                  <S.Label>Instagram:</S.Label>
+                  <S.TextBold>{skater?.instagram}</S.TextBold>
+                </S.WrapperText>
+              </S.InlineView>
+
+              <S.WrapperText>
+                <S.Label>Patrocínios:</S.Label>
+                <S.TextBold>{skater?.sponsors?.join(', ')}</S.TextBold>
+              </S.WrapperText>
+            </S.Wrapper>
+
 
             {/* TODO: Implementar update onPress={handleOpenSignModalOrOpenFormModal} */}
             {/* TODO: Definir quem fez a atualização */}

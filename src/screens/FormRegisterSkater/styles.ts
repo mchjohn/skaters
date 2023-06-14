@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 import { MaskedTextInput } from 'react-native-mask-text'
 
+import theme from '../../styles/theme'
+
 export const Modal = styled.Modal.attrs({
   animationType: 'slide',
   transparent: true
@@ -71,7 +73,7 @@ export const Form = styled.ScrollView`
 `
 
 export const Input = styled.TextInput.attrs({
-  placeholderTextColor: '#8c8c8c'
+  placeholderTextColor: theme.colors.gray2
 })`
   width: ${props => props.theme.size.full}
   height: 52px
@@ -86,7 +88,7 @@ export const Input = styled.TextInput.attrs({
 `
 
 export const MaskedInput = styled(MaskedTextInput).attrs({
-  placeholderTextColor: '#8c8c8c'
+  placeholderTextColor: theme.colors.gray2
 })`
   width: ${props => props.theme.size.full}
   height: 52px

@@ -130,7 +130,7 @@ export function FormRegisterSkater() {
               onPress={() => handleUpdateSkater()}
             >
               {isLoading ?
-                <Loading self='center' mx={0} my={0} color='#1A1A1A' /> :
+                <Loading self='center' mx={0} my={0} color={colors.gray9} /> :
                 <S.Text>{textButton}</S.Text>
               }
             </S.Button>
