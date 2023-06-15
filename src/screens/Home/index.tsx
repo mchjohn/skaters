@@ -9,6 +9,7 @@ import { useHome } from './useHome'
 import { UserInfo } from './UserInfo'
 
 import { SignIn } from '../SignIn'
+import { SignUp } from '../SignUp'
 import { Loading } from '../../components/Loading'
 import { CardSkater } from '../../components/CardSkater'
 import { ModalUserInfo } from '../../components/ModalUserInfo'
@@ -64,9 +65,10 @@ export function Home() {
         />
       }
 
+      <SignIn />
+      <SignUp />
       <FormRegisterSkater />
       <SuccessRegisterSkater />
-      <SignIn />
     </>
   )
 }

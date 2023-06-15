@@ -30,14 +30,14 @@ export const WrapperLoading = styled.View`
 `
 
 export const Avatar = styled.Image`
-  width: ${props => props.theme.size.lg}px
-  height: ${props => props.theme.size.lg}px
+  width: ${props => props.theme.size.md}px
+  height: ${props => props.theme.size.md}px
   borderRadius: ${props => props.theme.radii.full}px
 `
 
 export const Title = styled.Text`
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.lg}px
+  fontSize: ${props => props.theme.fontSize.md}px
   fontWeight: 700
 `
 
@@ -46,12 +46,12 @@ export const Text = styled.Text`
   margin-bottom: ${props => props.theme.spacing.xs}px
 
   color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
+  fontSize: ${props => props.theme.fontSize.sm}px
   fontWeight: 400
 `
 
 export const Link = styled.Text`
   color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.xs}px
+  fontSize: ${props => props.theme.fontSize['2xs']}px
   fontWeight: 400
 `
