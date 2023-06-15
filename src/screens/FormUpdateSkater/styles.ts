@@ -9,7 +9,8 @@ export const Modal = styled.Modal.attrs({
 
 export const CenteredView = styled.View`
   flex: 1
-  padding: ${props => props.theme.spacing.md}px
+  padding-bottom: ${props => props.theme.spacing.md}px
+  padding-horizontal: ${props => props.theme.spacing.md}px
   align-items: center
 
   borderRadius: ${props => props.theme.radii.md}px

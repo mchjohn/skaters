@@ -74,17 +74,19 @@ export function Profile() {
                   <S.Label>Base:</S.Label>
                   <S.TextBold>{skater?.stance}</S.TextBold>
                 </S.WrapperText>
+              </S.InlineView>
+
+              <S.InlineView style={{ alignItems: 'baseline' }}>
+                <S.WrapperText style={{ maxWidth: '46%' }}>
+                  <S.Label>Patrocínios:</S.Label>
+                  <S.TextBold>{skater?.sponsors?.join(', ')}</S.TextBold>
+                </S.WrapperText>
 
                 <S.WrapperText>
                   <S.Label>Instagram:</S.Label>
                   <S.TextBold>{skater?.instagram}</S.TextBold>
                 </S.WrapperText>
               </S.InlineView>
-
-              <S.WrapperText>
-                <S.Label>Patrocínios:</S.Label>
-                <S.TextBold>{skater?.sponsors?.join(', ')}</S.TextBold>
-              </S.WrapperText>
             </S.Wrapper>
 
 
