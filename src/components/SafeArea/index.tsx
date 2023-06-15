@@ -11,13 +11,15 @@ export function SafeArea({ children, onLayoutRootView }: Props) {
   const { colors } = useTheme()
   const insets = useSafeAreaInsets()
 
+  const mt = insets.top > 40 ? insets.top : 40
+
   return (
     <View
       onLayout={onLayoutRootView}
       style={{
         flex: 1,
         backgroundColor: colors.gray9,
-        paddingTop: insets.top,
+        paddingTop: mt,
         paddingBottom: insets.bottom,
         paddingLeft: insets.left,
         paddingRight: insets.right,

@@ -7,8 +7,8 @@ export const Button = styled.Pressable`
   margin-top: ${props => props.theme.spacing.xs}px
   margin-right: ${props => props.theme.spacing.xs}px
 
-  width: ${props => props.theme.size.md}px
-  height: ${props => props.theme.size.md}px
+  width: ${props => props.theme.spacing.sm}px
+  height: ${props => props.theme.spacing.sm}px
 
   alignItems: center
   justifyContent: center

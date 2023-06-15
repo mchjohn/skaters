@@ -2,7 +2,8 @@ import styled from 'styled-components/native'
 
 export const View = styled.View`
   flex: 1
-  padding: ${props => props.theme.spacing.md}px
+  padding-bottom: ${props => props.theme.spacing.md}px
+  padding-horizontal: ${props => props.theme.spacing.md}px
   background-color: ${props => props.theme.colors.gray9}
 `
 

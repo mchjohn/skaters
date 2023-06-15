@@ -19,7 +19,7 @@ export function Header({ children }: { children: ReactNode}) {
 
       <Ionicons
         name="ios-add-circle"
-        size={RFValue(40)}
+        size={RFValue(32)}
         color={colors.yellow4}
         onPress={handleOpenSignOrFormRegisterModal}
       />

@@ -15,7 +15,7 @@ const Theme = {
     sm: RFValue(8),
     md: RFValue(16),
     lg: RFValue(18),
-    xl: RFValue(40),
+    xl: RFValue(32),
   },
   size: {
     sm: RFValue(48),
@@ -36,9 +36,9 @@ const Theme = {
     xs: RFValue(12),
     sm: RFValue(14),
     md: RFValue(16),
-    lg: RFValue(20),
-    xl: RFValue(24),
-    '2xl': RFValue(28),
+    lg: RFValue(18),
+    xl: RFValue(20),
+    '2xl': RFValue(22),
   }
 } as const
 
