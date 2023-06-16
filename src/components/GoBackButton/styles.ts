@@ -7,10 +7,3 @@ export const Button = styled.Pressable`
   alignItems: center
   justifyContent: center
 `
-
-export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.sm}px
-
-  margin-left: ${props => props.theme.spacing.sm}px
-`

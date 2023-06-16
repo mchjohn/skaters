@@ -24,7 +24,7 @@ export function useFormRegisterSkater() {
     handleToggleRegisterSkaterSuccessModal
   } = useModal()
 
-  const disableUpdateSkaterButton =
+  const shouldDisableUpdateSkaterButton =
     !uf ||
     !age ||
     !name ||
@@ -92,7 +92,7 @@ export function useFormRegisterSkater() {
       instagram, setInstagram,
       updatedAt, setUpdatedAt,
     },
-    disableUpdateSkaterButton,
+    shouldDisableUpdateSkaterButton,
     modalFormRegisterSkaterIsVisible,
     handleUpdateSkater,
     handleToggleFormRegisterSkaterModal

@@ -4,6 +4,7 @@ import { ActivityIndicator } from 'react-native'
 
 import * as S from './styles'
 
+import { Text } from '../Typography/styles'
 import { ISkater } from '../../interfaces/skater'
 import { NavigationProps } from '../../../@types/routes'
 
@@ -42,9 +43,9 @@ export function CardSkater({ data, isLoading }: Props) {
         )}
 
         <S.Info>
-          <S.Title>{data?.name}</S.Title>
-          <S.Text>{data?.level} - {data?.address?.country}, {data?.address?.uf}</S.Text>
-          <S.Link>Ver mais...</S.Link>
+          <Text weight='700'>{data?.name}</Text>
+          <Text my='xs' size='sm'>{data?.level} - {data?.address?.country}, {data?.address?.uf}</Text>
+          <Text color='yellow4' size='2xs'>Ver mais...</Text>
         </S.Info>
       </S.Button>
     </S.WrapperButton>

@@ -1,5 +1,4 @@
-import * as S from './styles'
-
+import { Text } from '../../../components/Typography/styles'
 import { Loading } from '../../../components/Loading'
 
 type Props = {
@@ -14,7 +13,7 @@ export function UserInfo({ name, isLoading, handleToggleModal }: Props) {
   return (
     <>
       {name ?
-        <S.Text onPress={handleToggleModal}>Olá, {name} 🛹</S.Text> : null
+        <Text size='lg' color='yellow4' onPress={handleToggleModal}>Olá, {name} 🛹</Text> : null
       }
     </>
   )

@@ -1,11 +1,10 @@
-import { useTheme } from 'styled-components'
-
 import * as S from './styles'
 
 import { LikeButton } from '../../components/LikeButton'
 import { GoBackButton } from '../../components/GoBackButton'
 
 import { SignIn } from '../SignIn'
+import { Text } from '../../components/Typography/styles'
 import { SignUp } from '../SignUp'
 import { Loading } from '../../components/Loading'
 import { FormUpdateSkater } from '../FormUpdateSkater'
@@ -14,7 +13,6 @@ import { Avatar } from './Avatar'
 import { useProfile } from './useProfile'
 
 export function Profile() {
-  const { colors, fontSize } = useTheme()
   const {
     skater,
     isLiked,
@@ -47,48 +45,47 @@ export function Profile() {
 
               <S.InlineView>
                 <S.WrapperText>
-                  <S.Title>{skater?.name}</S.Title>
-                  <S.TextBold style={{ color: colors.gray2 }}>
+                  <Text mt='sm' color='yellow4' size='lg' weight='700'>{skater?.name}</Text>
+                  <Text weight='700' color='gray2' size='sm'>
                     {skater?.address.state}, {skater?.address.country}
-                  </S.TextBold>
+                  </Text>
                 </S.WrapperText>
 
-                <S.Link style={{ color: colors.gray2, fontWeight: '900' }}>
+                <Text size='xs' color='gray2' weight='900'>
                   {amountLikes}
-                </S.Link>
+                </Text>
               </S.InlineView>
 
               <S.ListInfo>
                 <S.CardInfo>
-                  <S.Label>Idade</S.Label>
-                  <S.TextBold>{skater?.age}</S.TextBold>
+                  <Text size='sm'>Idade</Text>
+                  <Text weight='700' color='gray1' size='sm'>{skater?.age}</Text>
                 </S.CardInfo>
 
                 <S.CardInfo>
-                  <S.Label>Categoria</S.Label>
-                  <S.TextBold>{skater?.level}</S.TextBold>
+                  <Text size='sm'>Categoria</Text>
+                  <Text weight='700' color='gray1' size='sm'>{skater?.level}</Text>
                 </S.CardInfo>
 
                 <S.CardInfo>
-                  <S.Label>Base</S.Label>
-                  <S.TextBold>{skater?.stance}</S.TextBold>
+                  <Text size='sm'>Base</Text>
+                  <Text weight='700' color='gray1' size='sm'>{skater?.stance}</Text>
                 </S.CardInfo>
 
-
                 <S.CardInfo>
-                  <S.Label>Instagram</S.Label>
-                  <S.TextBold>{skater?.instagram}</S.TextBold>
+                  <Text size='sm'>Instagram</Text>
+                  <Text weight='700' color='gray1' size='sm'>{skater?.instagram}</Text>
                 </S.CardInfo>
               </S.ListInfo>
 
               <S.WrapperText>
-                <S.Label>Patrocínios:</S.Label>
+                <Text size='sm'>Patrocínios:</Text>
                 <S.ListSponsors>
                   {skater?.sponsors.map((brand, index) => {
                     if (index % 2 === 0) {
                       return (
                         <S.CardSponsor key={brand}>
-                          <S.TextBold style={{ fontSize: fontSize.xs }}>{brand}</S.TextBold>
+                          <Text weight='700' color='gray1' size='xs'>{brand}</Text>
                         </S.CardSponsor>
                       )
                     }
@@ -99,7 +96,7 @@ export function Profile() {
                     if (index % 2 !== 0) {
                       return (
                         <S.CardSponsor key={brand}>
-                          <S.TextBold style={{ fontSize: fontSize.xs }}>{brand}</S.TextBold>
+                          <Text weight='700' color='gray1' size='xs'>{brand}</Text>
                         </S.CardSponsor>
                       )
                     }
@@ -108,17 +105,16 @@ export function Profile() {
               </S.WrapperText>
             </S.Wrapper>
 
-
             {/* TODO: Implementar update onPress={handleOpenSignModalOrOpenFormModal} */}
             {/* TODO: Definir quem fez a atualização */}
             {/* <S.Footer>
               {skater?.updater &&
-                <S.Link>{skater?.updater.name} atualizou em {skater?.updatedAt} - </S.Link>
+                <Text size='xs'>{skater?.updater.name} atualizou em {skater?.updatedAt} - </Text>
               }
-              <S.Link>Enviar atualização.</S.Link>
+              <Text size='xs'>Enviar atualização.</Text>
             </S.Footer> */}
 
-            <S.Link>Cadastrado por {skater?.creator.name} em {skater?.updatedAt.slice(6)}</S.Link>
+            <Text size='xs'>Cadastrado por {skater?.creator.name} em {skater?.updatedAt.slice(6)}</Text>
           </S.Card>
         }
       </S.View>
