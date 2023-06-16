@@ -36,19 +36,6 @@ export const Header = styled.View`
   justify-content: space-between
 `
 
-export const Title = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.sm}px
-
-  max-width: 280px
-`
-
-export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray9}
-  fontSize: ${props => props.theme.fontSize.md}px
-  fontWeight: 700
-`
-
 export const Button = styled.Pressable`
   width: ${props => props.theme.size.full}
 

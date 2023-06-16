@@ -32,26 +32,6 @@ export const Card = styled.ScrollView`
   background-color: ${props => props.theme.colors.gray8}
 `
 
-export const Title = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.xl}px
-
-  margin-vertical: ${props => props.theme.spacing.lg}px
-`
-
-export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
-
-  margin-top: ${props => props.theme.spacing.sm}px
-`
-
-export const ButtonText = styled.Text`
-  color: ${props => props.theme.colors.gray9}
-  fontSize: ${props => props.theme.fontSize.md}px
-  fontWeight: 700
-`
-
 export const Button = styled.Pressable`
   width: ${props => props.theme.size.full}
 

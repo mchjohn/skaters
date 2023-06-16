@@ -42,4 +42,8 @@ const Theme = {
   }
 } as const
 
+export type Color = typeof Theme.colors
+export type Spacing = typeof Theme.spacing
+export type FontSize = typeof Theme.fontSize
+
 export default Theme

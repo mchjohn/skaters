@@ -4,25 +4,26 @@ import { Octicons } from '@expo/vector-icons'
 import { RFValue } from '../../utils/responsive_fontsize'
 
 import * as S from './styles'
-import Theme from '../../styles/theme'
+
+import { Text } from '../Typography/styles'
 
 type Props = {
   onPress(): void
 }
 
 export function ModalCloseButton({ onPress }: Props) {
-  const { colors } = useTheme()
+  const { colors, radii } = useTheme()
 
   return (
     <S.Button
       android_ripple={{
-        color: Theme.colors.yellow4,
-        radius: Theme.radii.xl,
+        color: colors.yellow4,
+        radius: radii.xl,
       }}
       onPress={onPress}
     >
       <Octicons name="chevron-left" size={RFValue(26)} color={colors.yellow4} />
-      <S.Text>Voltar</S.Text>
+      <Text size='sm' ml='sm'>Voltar</Text>
     </S.Button>
   )
 }

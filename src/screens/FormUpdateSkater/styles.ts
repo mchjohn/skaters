@@ -27,23 +27,8 @@ export const ModalView = styled.View`
   borderRadius: ${props => props.theme.radii.md}px
 `
 
-export const Title = styled.Text`
-  margin-top: ${props => props.theme.spacing.xs}px
-  margin-bottom: ${props => props.theme.spacing.md}px
-
-  align-self: flex-start
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.sm}px
-`
-
 export const Info = styled.View`
   margin-vertical: ${props => props.theme.spacing.xl}px
-`
-
-export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray9}
-  fontSize: ${props => props.theme.fontSize.md}px
-  fontWeight: 700
 `
 
 export const Button = styled.Pressable`
@@ -83,18 +68,4 @@ export const Input = styled.TextInput.attrs({
 
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray9}
-`
-
-export const TextLink = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
-`
-
-export const LabelInput = styled.Text`
-  alignSelf: flex-start
-  margin-top: ${props => props.theme.spacing.xs}px
-  margin-left: ${props => props.theme.spacing.xs}px
-
-  color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.xs}px
 `

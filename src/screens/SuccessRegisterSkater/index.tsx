@@ -2,6 +2,7 @@ import { useTheme } from 'styled-components'
 
 import * as S from './styles'
 
+import { Text } from '../../components/Typography/styles'
 import { useAuth } from '../../contexts/AuthContext'
 import { useModal } from '../../contexts/ModalContext'
 
@@ -22,17 +23,17 @@ export function SuccessRegisterSkater() {
       <S.CenteredView>
         <S.ModalView>
           <S.Card>
-            <S.Title>Boa!</S.Title>
+            <Text size='xl' my='lg'>Boa!</Text>
 
-            <S.Text>
+            <Text mt='sm'>
               O skatista foi salvo. Nossa equipe agradece.
-            </S.Text>
-            <S.Text>
+            </Text>
+            <Text mt='sm'>
               Vamos analisar e logo estará disponível para todos no app.
-            </S.Text>
-            <S.Text>
+            </Text>
+            <Text mt='sm'>
               TMJ {user?.name} 🛹
-            </S.Text>
+            </Text>
 
             <S.Button
               android_ripple={{
@@ -40,7 +41,7 @@ export function SuccessRegisterSkater() {
               }}
               onPress={handleToggleRegisterSkaterSuccessModal}
             >
-              <S.ButtonText>OK</S.ButtonText>
+              <Text color='gray9' weight='700'>OK</Text>
             </S.Button>
           </S.Card>
         </S.ModalView>

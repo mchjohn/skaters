@@ -4,6 +4,7 @@ import Toast from 'react-native-toast-message'
 import * as S from './styles'
 import { useSignUp } from './useSignUp'
 
+import { Text } from '../../components/Typography/styles'
 import { ModalCloseButton } from '../../components/ModalCloseButton'
 
 export function SignUp() {
@@ -30,7 +31,9 @@ export function SignUp() {
           <ModalCloseButton onPress={handleToggleSignUpModal} />
 
           <S.ModalView>
-            <S.Title>Crie uma conta para realizar essa trick 🛹</S.Title>
+            <Text mb='xl' size='xl' weight='700' style={{ alignSelf: 'flex-start' }}>
+              Crie uma conta para realizar essa trick 🛹
+            </Text>
 
             <S.Form>
               <S.Input
@@ -58,7 +61,9 @@ export function SignUp() {
                 value={formData.password}
                 onChangeText={formData.setPassword}
               />
-              <S.LabelInput>Mínimo 6 caracteres *</S.LabelInput>
+              <Text mt='xs' ml='xs' color='yellow4' size='xs' style={{ alignSelf: 'flex-start' }}>
+                Mínimo 6 caracteres *
+              </Text>
 
               <S.Button
                 android_ripple={{
@@ -69,8 +74,8 @@ export function SignUp() {
                 onPress={handleSignUp}
               >
                 {disableSignUpButton ?
-                  <S.Text>Preencha todos os campos</S.Text> :
-                  <S.Text>Cadastrar</S.Text>
+                  <Text color='gray9' weight='700'>Preencha todos os campos</Text> :
+                  <Text color='gray9' weight='700'>Cadastrar</Text>
                 }
               </S.Button>
 
@@ -80,7 +85,7 @@ export function SignUp() {
                 }}
                 onPress={handleGoToSignIn}
               >
-                <S.TextLink>Entrar com minha conta</S.TextLink>
+                <Text>Entrar com minha conta</Text>
               </S.ButtonOutline>
             </S.Form>
           </S.ModalView>

@@ -7,6 +7,7 @@ import { NavigationProps } from '../../../@types/routes'
 
 import * as S from './styles'
 import Theme from '../../styles/theme'
+import { Text } from '../Typography/styles'
 
 export function GoBackButton() {
   const { colors } = useTheme()
@@ -23,7 +24,7 @@ export function GoBackButton() {
       onPress={handleGoBack}
     >
       <Octicons name="chevron-left" size={RFValue(26)} color={colors.yellow4} />
-      <S.Text>Voltar</S.Text>
+      <Text size='sm' ml='sm'>Voltar</Text>
     </S.Button>
   )
 }

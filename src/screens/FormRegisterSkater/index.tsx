@@ -4,6 +4,7 @@ import Toast from 'react-native-toast-message'
 import * as S from './styles'
 import { useFormRegisterSkater } from './useFormRegisterSkater'
 
+import { Text } from '../../components/Typography/styles'
 import { Select } from '../../components/Select'
 import { Loading } from '../../components/Loading'
 import { ModalCloseButton } from '../../components/ModalCloseButton'
@@ -30,7 +31,9 @@ export function FormRegisterSkater() {
     >
       <S.CenteredView>
         <S.Header>
-          <S.Title>Preencha todos os campos para cadastrar um skatista no app</S.Title>
+          <Text size='sm' style={{ maxWidth: 220 }}>
+            Preencha todos os campos para cadastrar um skatista no app
+          </Text>
 
           <ModalCloseButton onPress={handleToggleFormRegisterSkaterModal} />
         </S.Header>
@@ -131,7 +134,7 @@ export function FormRegisterSkater() {
             >
               {isLoading ?
                 <Loading self='center' mx={0} my={0} color={colors.gray9} /> :
-                <S.Text>{textButton}</S.Text>
+                <Text size='md' color='gray9' weight='700'>{textButton}</Text>
               }
             </S.Button>
           </S.Form>

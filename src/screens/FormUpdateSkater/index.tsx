@@ -4,6 +4,7 @@ import Toast from 'react-native-toast-message'
 import * as S from './styles'
 import { useFormUpdateSkater } from './useFormUpdateSkater'
 
+import { Text } from '../../components/Typography/styles'
 import { ModalCloseButton } from '../../components/ModalCloseButton'
 
 export function FormUpdateSkater() {
@@ -26,7 +27,7 @@ export function FormUpdateSkater() {
         <ModalCloseButton onPress={handleToggleFormUpdateSkaterModal} />
 
         <S.ModalView>
-          <S.Title>Preencha os campos que deseja atualizar 🛹</S.Title>
+          <Text my='xs' size='sm'>Preencha os campos que deseja atualizar 🛹</Text>
 
           <S.Form>
             <S.Input
@@ -94,8 +95,8 @@ export function FormUpdateSkater() {
               onPress={handleUpdateSkater}
             >
               {disableUpdateSkaterButton ?
-                <S.Text>Preencha ao menos um campo</S.Text> :
-                <S.Text>Salvar</S.Text>
+                <Text color='gray9' weight='700'>Preencha ao menos um campo</Text> :
+                <Text color='gray9' weight='700'>Salvar</Text>
               }
             </S.Button>
           </S.Form>

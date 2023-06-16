@@ -4,6 +4,7 @@ import Toast from 'react-native-toast-message'
 import * as S from './styles'
 import { useSignIn } from './useSignIn'
 
+import { Text } from '../../components/Typography/styles'
 import { ModalCloseButton } from '../../components/ModalCloseButton'
 
 export function SignIn() {
@@ -29,7 +30,9 @@ export function SignIn() {
         <ModalCloseButton onPress={handleToggleSignInModal} />
 
         <S.ModalView>
-          <S.Title>Entre com sua conta para continuar 🛹</S.Title>
+          <Text mb='xl' size='xl' weight='700' style={{ alignSelf: 'flex-start' }}>
+            Entre com sua conta para continuar 🛹
+          </Text>
 
           <S.Form>
             <S.Input
@@ -59,8 +62,8 @@ export function SignIn() {
               onPress={handleSignIn}
             >
               {disableSignInButton ?
-                <S.Text>Preencha todos os campos</S.Text> :
-                <S.Text>Entrar</S.Text>
+                <Text color='gray9' weight='700'>Preencha todos os campos</Text> :
+                <Text color='gray9' weight='700'>Entrar</Text>
               }
             </S.Button>
 
@@ -70,7 +73,7 @@ export function SignIn() {
               }}
               onPress={handleGoToSignUp}
             >
-              <S.TextLink>Criar uma conta</S.TextLink>
+              <Text>Criar uma conta</Text>
             </S.ButtonOutline>
           </S.Form>
         </S.ModalView>

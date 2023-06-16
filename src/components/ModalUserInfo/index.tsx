@@ -6,6 +6,7 @@ import { IUser } from '../../interfaces/user'
 
 import * as UsersServices from '../../services/firebase/UsersServices'
 
+import { Text } from '../Typography/styles'
 import { ModalCloseButton } from '../ModalCloseButton'
 
 type Props = {
@@ -37,18 +38,18 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
         <ModalCloseButton onPress={handleToggleModal} />
 
         <S.ModalView>
-          <S.Title>Olá, {user?.name} 🛹</S.Title>
+          <Text color='yellow4' size='xl' weight='700'>Olá, {user?.name} 🛹</Text>
 
           <S.Info>
-            <S.Text>Email: {user?.email}</S.Text>
+            <Text mb='xs'>Email: {user?.email}</Text>
           </S.Info>
 
-          <S.Text>
-            Skatistas curtidos: <S.Text style={{ color: colors.yellow4 }}>{amountLikes}</S.Text>
-          </S.Text>
-          <S.Text>
-            Skatistas cadastrados: <S.Text style={{ color: colors.yellow4 }}>{amountCreated}</S.Text>
-          </S.Text>
+          <Text mb='xs'>
+            Skatistas curtidos: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountLikes}</Text>
+          </Text>
+          <Text mb='xs'>
+            Skatistas cadastrados: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountCreated}</Text>
+          </Text>
         </S.ModalView>
 
         <S.Button
@@ -58,7 +59,7 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
           }}
           onPress={handleSignOut}
         >
-          <S.Link>Sair da minha conta</S.Link>
+          <Text>Sair da minha conta</Text>
         </S.Button>
       </S.CenteredView>
     </S.Modal>
