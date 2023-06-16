@@ -7,7 +7,7 @@ import { useFormRegisterSkater } from './useFormRegisterSkater'
 import { Text } from '../../components/Typography/styles'
 import { Select } from '../../components/Select'
 import { Loading } from '../../components/Loading'
-import { ModalCloseButton } from '../../components/ModalCloseButton'
+import { GoBackButton } from '../../components/GoBackButton'
 
 export function FormRegisterSkater() {
   const { colors } = useTheme()
@@ -35,7 +35,7 @@ export function FormRegisterSkater() {
             Preencha todos os campos para cadastrar um skatista no app
           </Text>
 
-          <ModalCloseButton onPress={handleToggleFormRegisterSkaterModal} />
+          <GoBackButton onPress={handleToggleFormRegisterSkaterModal} />
         </S.Header>
 
         <S.ModalView>

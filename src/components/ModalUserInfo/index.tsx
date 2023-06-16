@@ -7,7 +7,7 @@ import { IUser } from '../../interfaces/user'
 import * as UsersServices from '../../services/firebase/UsersServices'
 
 import { Text } from '../Typography/styles'
-import { ModalCloseButton } from '../ModalCloseButton'
+import { GoBackButton } from '../GoBackButton'
 
 type Props = {
   user: IUser
@@ -35,7 +35,7 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
       }}
     >
       <S.CenteredView>
-        <ModalCloseButton onPress={handleToggleModal} />
+        <GoBackButton onPress={handleToggleModal} />
 
         <S.ModalView>
           <Text color='yellow4' size='xl' weight='700'>Olá, {user?.name} 🛹</Text>

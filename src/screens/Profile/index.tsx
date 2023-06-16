@@ -1,5 +1,3 @@
-import { useTheme } from 'styled-components'
-
 import * as S from './styles'
 
 import { LikeButton } from '../../components/LikeButton'
@@ -15,7 +13,6 @@ import { Avatar } from './Avatar'
 import { useProfile } from './useProfile'
 
 export function Profile() {
-  const { colors, fontSize } = useTheme()
   const {
     skater,
     isLiked,
@@ -88,7 +85,7 @@ export function Profile() {
                     if (index % 2 === 0) {
                       return (
                         <S.CardSponsor key={brand}>
-                          <Text weight='700' color='gray1' size='sm' style={{ fontSize: fontSize.xs }}>{brand}</Text>
+                          <Text weight='700' color='gray1' size='xs'>{brand}</Text>
                         </S.CardSponsor>
                       )
                     }
@@ -99,7 +96,7 @@ export function Profile() {
                     if (index % 2 !== 0) {
                       return (
                         <S.CardSponsor key={brand}>
-                          <Text weight='700' color='gray1' size='sm' style={{ fontSize: fontSize.xs }}>{brand}</Text>
+                          <Text weight='700' color='gray1' size='xs'>{brand}</Text>
                         </S.CardSponsor>
                       )
                     }

@@ -5,7 +5,7 @@ import { useSignIn } from './useSignIn'
 
 import * as S from '../../components/SignModal/styles'
 import { Text } from '../../components/Typography/styles'
-import { ModalCloseButton } from '../../components/ModalCloseButton'
+import { GoBackButton } from '../../components/GoBackButton'
 
 export function SignIn() {
   const { colors } = useTheme()
@@ -27,7 +27,7 @@ export function SignIn() {
       }}
     >
       <S.CenteredView>
-        <ModalCloseButton onPress={handleToggleSignInModal} />
+        <GoBackButton onPress={handleToggleSignInModal} />
 
         <S.ModalView>
           <Text mb='xl' size='xl' weight='700' style={{ alignSelf: 'flex-start' }}>

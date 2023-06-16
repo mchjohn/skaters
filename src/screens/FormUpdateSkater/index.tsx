@@ -5,7 +5,7 @@ import * as S from './styles'
 import { useFormUpdateSkater } from './useFormUpdateSkater'
 
 import { Text } from '../../components/Typography/styles'
-import { ModalCloseButton } from '../../components/ModalCloseButton'
+import { GoBackButton } from '../../components/GoBackButton'
 
 export function FormUpdateSkater() {
   const { colors } = useTheme()
@@ -24,7 +24,7 @@ export function FormUpdateSkater() {
       onRequestClose={handleToggleFormUpdateSkaterModal}
     >
       <S.CenteredView>
-        <ModalCloseButton onPress={handleToggleFormUpdateSkaterModal} />
+        <GoBackButton onPress={handleToggleFormUpdateSkaterModal} />
 
         <S.ModalView>
           <Text my='xs' size='sm'>Preencha os campos que deseja atualizar 🛹</Text>
