@@ -3,21 +3,6 @@ import { MaskedTextInput } from 'react-native-mask-text'
 
 import theme from '../../styles/theme'
 
-export const Modal = styled.Modal.attrs({
-  animationType: 'slide',
-  transparent: true
-})``
-
-export const CenteredView = styled.View`
-  flex: 1
-  padding-bottom: ${props => props.theme.spacing.md}px
-  padding-horizontal: ${props => props.theme.spacing.md}px
-  align-items: center
-
-  borderRadius: ${props => props.theme.radii.md}px
-  backgroundColor: ${props => props.theme.colors.gray9}
-`
-
 export const ModalView = styled.View`
   flex: 1
   width: ${props => props.theme.size.full}

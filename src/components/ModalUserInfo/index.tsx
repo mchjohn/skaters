@@ -7,6 +7,7 @@ import { IUser } from '../../interfaces/user'
 import * as UsersServices from '../../services/firebase/UsersServices'
 
 import { Text } from '../Typography/styles'
+import { Modal } from '../Modal'
 import { GoBackButton } from '../GoBackButton'
 
 type Props = {
@@ -28,40 +29,36 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
   }
 
   return (
-    <S.Modal
+    <Modal
       visible={modalVisible}
-      onRequestClose={() => {
-        handleToggleModal()
-      }}
+      closeModal={handleToggleModal}
     >
-      <S.CenteredView>
-        <GoBackButton onPress={handleToggleModal} />
+      <GoBackButton onPress={handleToggleModal} />
 
-        <S.ModalView>
-          <Text color='yellow4' size='xl' weight='700'>Olá, {user?.name} 🛹</Text>
+      <S.ModalView>
+        <Text color='yellow4' size='xl' weight='700'>Olá, {user?.name} 🛹</Text>
 
-          <S.Info>
-            <Text mb='xs'>Email: {user?.email}</Text>
-          </S.Info>
+        <S.Info>
+          <Text mb='xs'>Email: {user?.email}</Text>
+        </S.Info>
 
-          <Text mb='xs'>
+        <Text mb='xs'>
             Skatistas curtidos: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountLikes}</Text>
-          </Text>
-          <Text mb='xs'>
+        </Text>
+        <Text mb='xs'>
             Skatistas cadastrados: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountCreated}</Text>
-          </Text>
-        </S.ModalView>
+        </Text>
+      </S.ModalView>
 
-        <S.Button
-          android_ripple={{
-            color: colors.yellow4,
-            foreground: true,
-          }}
-          onPress={handleSignOut}
-        >
-          <Text>Sair da minha conta</Text>
-        </S.Button>
-      </S.CenteredView>
-    </S.Modal>
+      <S.Button
+        android_ripple={{
+          color: colors.yellow4,
+          foreground: true,
+        }}
+        onPress={handleSignOut}
+      >
+        <Text>Sair da minha conta</Text>
+      </S.Button>
+    </Modal>
   )
 }
