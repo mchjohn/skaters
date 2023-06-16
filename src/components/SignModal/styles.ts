@@ -81,3 +81,7 @@ export const ButtonOutline = styled.Pressable`
   borderColor: ${props => props.theme.colors.gray1}
   borderRadius: ${props => props.theme.radii.md}px
 `
+
+export const Info = styled.View`
+  margin-vertical: ${props => props.theme.spacing.xl}px
+`

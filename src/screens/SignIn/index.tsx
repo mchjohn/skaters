@@ -1,9 +1,9 @@
 import { useTheme } from 'styled-components'
 import Toast from 'react-native-toast-message'
 
-import * as S from './styles'
 import { useSignIn } from './useSignIn'
 
+import * as S from '../../components/SignModal/styles'
 import { Text } from '../../components/Typography/styles'
 import { ModalCloseButton } from '../../components/ModalCloseButton'
 
