@@ -17,14 +17,13 @@ export function FormRegisterSkater() {
   const {
     formData,
     isLoading,
-    disableUpdateSkaterButton,
+    shouldDisableUpdateSkaterButton,
     modalFormRegisterSkaterIsVisible,
     handleToggleFormRegisterSkaterModal,
     handleUpdateSkater,
   } = useFormRegisterSkater()
 
-  const isDisabled = isLoading || disableUpdateSkaterButton
-  const textButton = disableUpdateSkaterButton ? 'Preencha todos os campos' : 'Salvar'
+  const textButton = shouldDisableUpdateSkaterButton ? 'Preencha todos os campos' : 'Salvar'
 
   return (
     <Modal
@@ -42,7 +41,7 @@ export function FormRegisterSkater() {
 
         <S.Form>
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             maxLength={32}
             autoCapitalize='words'
             placeholder='Nome do skatista'
@@ -50,7 +49,7 @@ export function FormRegisterSkater() {
             onChangeText={formData.setName}
           />
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             maxLength={2}
             placeholder='Idade'
             keyboardType='numeric'
@@ -58,7 +57,7 @@ export function FormRegisterSkater() {
             onChangeText={formData.setAge}
           />
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             autoCapitalize='words'
             maxLength={22}
             placeholder='País'
@@ -66,7 +65,7 @@ export function FormRegisterSkater() {
             onChangeText={formData.setCountry}
           />
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             autoCapitalize='words'
             maxLength={22}
             placeholder='Estado'
@@ -74,7 +73,7 @@ export function FormRegisterSkater() {
             onChangeText={formData.setState}
           />
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             autoCapitalize='characters'
             maxLength={2}
             placeholder='UF do estado'
@@ -98,14 +97,14 @@ export function FormRegisterSkater() {
           </S.WrapperSelect>
 
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             autoCapitalize='words'
             placeholder='Patrocínios (separado por virgula)'
             value={formData.sponsors}
             onChangeText={formData.setSponsors}
           />
           <Input
-            editable={isDisabled}
+            editable={!isLoading}
             autoCapitalize='none'
             maxLength={22}
             placeholder='Instagram'
@@ -113,7 +112,7 @@ export function FormRegisterSkater() {
             onChangeText={formData.setInstagram}
           />
           <S.MaskedInput
-            editable={isDisabled}
+            editable={!isLoading}
             maxLength={10}
             placeholder='Data das informações'
             keyboardType='numeric'
@@ -129,8 +128,8 @@ export function FormRegisterSkater() {
             android_ripple={{
               color: colors.gray9,
             }}
-            style={{ opacity: disableUpdateSkaterButton ? 0.8 : 1 }}
-            disabled={isLoading || disableUpdateSkaterButton}
+            style={{ opacity: shouldDisableUpdateSkaterButton ? 0.8 : 1 }}
+            disabled={isLoading || shouldDisableUpdateSkaterButton}
             onPress={() => handleUpdateSkater()}
           >
             {isLoading ?
