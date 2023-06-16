@@ -6,6 +6,7 @@ import { useFormUpdateSkater } from './useFormUpdateSkater'
 
 import { Text } from '../../components/Typography/styles'
 import { Modal } from '../../components/Modal'
+import { Input } from '../../components/Input/styles'
 import { GoBackButton } from '../../components/GoBackButton'
 
 export function FormUpdateSkater() {
@@ -30,55 +31,55 @@ export function FormUpdateSkater() {
         <Text my='xs' size='sm'>Preencha os campos que deseja atualizar 🛹</Text>
 
         <S.Form>
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={32}
             placeholder='Nome do skatista'
             value={formData.name}
             onChangeText={formData.setName}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={2}
             placeholder='Idade'
             value={formData.age}
             onChangeText={formData.setAge}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={22}
             placeholder='Estado'
             value={formData.state}
             onChangeText={formData.setState}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={12}
             placeholder='Nível (Profissional ou Amador)'
             value={formData.level}
             onChangeText={formData.setLevel}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={7}
             placeholder='Base (Regular ou Goofy)'
             value={formData.stance}
             onChangeText={formData.setStance}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             placeholder='Patrocínios (separado por virgula)'
             value={formData.sponsors}
             onChangeText={formData.setSponsors}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={22}
             placeholder='Instagram'
             value={formData.instagram}
             onChangeText={formData.setInstagram}
           />
-          <S.Input
+          <Input
             autoCapitalize='words'
             maxLength={7}
             placeholder='Data das informações'

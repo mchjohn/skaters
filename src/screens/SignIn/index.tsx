@@ -6,6 +6,7 @@ import { useSignIn } from './useSignIn'
 import * as S from '../../components/SignModal/styles'
 import { Text } from '../../components/Typography/styles'
 import { Modal } from '../../components/Modal'
+import { Input } from '../../components/Input/styles'
 import { GoBackButton } from '../../components/GoBackButton'
 
 export function SignIn() {
@@ -33,7 +34,7 @@ export function SignIn() {
         </Text>
 
         <S.Form>
-          <S.Input
+          <Input
             keyboardType='email-address'
             autoCapitalize='none'
             autoCorrect={false}
@@ -42,7 +43,7 @@ export function SignIn() {
             onChangeText={formData.setEmail}
           />
 
-          <S.Input
+          <Input
             secureTextEntry
             autoCorrect={false}
             autoCapitalize='none'

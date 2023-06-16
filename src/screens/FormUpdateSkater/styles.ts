@@ -1,7 +1,5 @@
 import styled from 'styled-components/native'
 
-import theme from '../../styles/theme'
-
 export const ModalView = styled.View`
   flex: 1
   width: ${props => props.theme.size.full}
@@ -38,19 +36,4 @@ export const Form = styled.ScrollView`
   padding: ${props => props.theme.spacing.md}px
   background-color: ${props => props.theme.colors.gray8}
   borderRadius: ${props => props.theme.radii.md}px
-`
-
-export const Input = styled.TextInput.attrs({
-  placeholderTextColor: theme.colors.gray1
-})`
-  width: ${props => props.theme.size.full}
-  height: 52px
-  margin-top: ${props => props.theme.spacing.lg}px
-  padding-left: ${props => props.theme.spacing.md}px
-
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
-
-  borderRadius: ${props => props.theme.radii.md}px
-  background-color: ${props => props.theme.colors.gray9}
 `

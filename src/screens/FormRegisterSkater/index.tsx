@@ -6,6 +6,7 @@ import { useFormRegisterSkater } from './useFormRegisterSkater'
 
 import { Text } from '../../components/Typography/styles'
 import { Modal } from '../../components/Modal'
+import { Input } from '../../components/Input/styles'
 import { Select } from '../../components/Select'
 import { Loading } from '../../components/Loading'
 import { GoBackButton } from '../../components/GoBackButton'
@@ -30,25 +31,25 @@ export function FormRegisterSkater() {
       visible={modalFormRegisterSkaterIsVisible}
       closeModal={handleToggleFormRegisterSkaterModal}
     >
-      <S.Header>
-        <Text size='sm' style={{ maxWidth: 220 }}>
+      <S.ModalView centerContent contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
+        <S.Header>
+          <Text size='sm' style={{ maxWidth: 220 }}>
             Preencha todos os campos para cadastrar um skatista no app
-        </Text>
+          </Text>
 
-        <GoBackButton onPress={handleToggleFormRegisterSkaterModal} />
-      </S.Header>
+          <GoBackButton onPress={handleToggleFormRegisterSkaterModal} />
+        </S.Header>
 
-      <S.ModalView>
         <S.Form>
-          <S.Input
+          <Input
             editable={isDisabled}
-            autoCapitalize='words'
             maxLength={32}
+            autoCapitalize='words'
             placeholder='Nome do skatista'
             value={formData.name}
             onChangeText={formData.setName}
           />
-          <S.Input
+          <Input
             editable={isDisabled}
             maxLength={2}
             placeholder='Idade'
@@ -56,7 +57,7 @@ export function FormRegisterSkater() {
             value={formData.age}
             onChangeText={formData.setAge}
           />
-          <S.Input
+          <Input
             editable={isDisabled}
             autoCapitalize='words'
             maxLength={22}
@@ -64,7 +65,7 @@ export function FormRegisterSkater() {
             value={formData.country}
             onChangeText={formData.setCountry}
           />
-          <S.Input
+          <Input
             editable={isDisabled}
             autoCapitalize='words'
             maxLength={22}
@@ -72,7 +73,7 @@ export function FormRegisterSkater() {
             value={formData.state}
             onChangeText={formData.setState}
           />
-          <S.Input
+          <Input
             editable={isDisabled}
             autoCapitalize='characters'
             maxLength={2}
@@ -96,14 +97,14 @@ export function FormRegisterSkater() {
             />
           </S.WrapperSelect>
 
-          <S.Input
+          <Input
             editable={isDisabled}
             autoCapitalize='words'
             placeholder='Patrocínios (separado por virgula)'
             value={formData.sponsors}
             onChangeText={formData.setSponsors}
           />
-          <S.Input
+          <Input
             editable={isDisabled}
             autoCapitalize='none'
             maxLength={22}

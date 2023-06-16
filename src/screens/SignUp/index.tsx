@@ -6,6 +6,7 @@ import { useSignUp } from './useSignUp'
 import * as S from '../../components/SignModal/styles'
 import { Text } from '../../components/Typography/styles'
 import { Modal } from '../../components/Modal'
+import { Input } from '../../components/Input/styles'
 import { GoBackButton } from '../../components/GoBackButton'
 
 export function SignUp() {
@@ -34,7 +35,7 @@ export function SignUp() {
           </Text>
 
           <S.Form>
-            <S.Input
+            <Input
               autoCapitalize='words'
               maxLength={32}
               placeholder='Digite seu nome/apelido *'
@@ -42,7 +43,7 @@ export function SignUp() {
               onChangeText={formData.setName}
             />
 
-            <S.Input
+            <Input
               keyboardType='email-address'
               autoCapitalize='none'
               autoCorrect={false}
@@ -51,7 +52,7 @@ export function SignUp() {
               onChangeText={formData.setEmail}
             />
 
-            <S.Input
+            <Input
               secureTextEntry
               autoCapitalize='none'
               autoCorrect={false}
