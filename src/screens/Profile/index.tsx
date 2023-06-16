@@ -79,7 +79,9 @@ export function Profile() {
               <S.InlineView style={{ alignItems: 'baseline' }}>
                 <S.WrapperText style={{ maxWidth: '46%' }}>
                   <S.Label>Patrocínios:</S.Label>
-                  <S.TextBold>{skater?.sponsors?.join(', ')}</S.TextBold>
+                  <S.ScrollView>
+                    <S.TextBold>{skater?.sponsors?.join(', ')}</S.TextBold>
+                  </S.ScrollView>
                 </S.WrapperText>
 
                 <S.WrapperText>

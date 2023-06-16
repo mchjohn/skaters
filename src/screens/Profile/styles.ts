@@ -81,3 +81,7 @@ export const Link = styled.Text`
   color: ${props => props.theme.colors.gray1}
   fontSize: ${props => props.theme.fontSize.xs}px
 `
+
+export const ScrollView = styled.ScrollView`
+  maxHeight: 110px
+`
