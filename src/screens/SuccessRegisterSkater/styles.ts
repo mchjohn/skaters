@@ -1,20 +1,5 @@
 import styled from 'styled-components/native'
 
-export const Modal = styled.Modal.attrs({
-  animationType: 'slide',
-  transparent: true
-})``
-
-export const CenteredView = styled.View`
-  flex: 1
-  padding: ${props => props.theme.spacing.md}px
-  align-items: center
-  justify-content: center
-
-  borderRadius: ${props => props.theme.radii.md}px
-  backgroundColor: ${props => props.theme.colors.gray9}
-`
-
 export const ModalView = styled.View`
   width: ${props => props.theme.size.full}
 
@@ -30,26 +15,6 @@ export const Card = styled.ScrollView`
 
   borderRadius: ${props => props.theme.radii.md}px
   background-color: ${props => props.theme.colors.gray8}
-`
-
-export const Title = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.xl}px
-
-  margin-vertical: ${props => props.theme.spacing.lg}px
-`
-
-export const Text = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.md}px
-
-  margin-top: ${props => props.theme.spacing.sm}px
-`
-
-export const ButtonText = styled.Text`
-  color: ${props => props.theme.colors.gray9}
-  fontSize: ${props => props.theme.fontSize.md}px
-  fontWeight: 700
 `
 
 export const Button = styled.Pressable`

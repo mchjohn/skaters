@@ -6,24 +6,34 @@ import { RFValue } from '../../utils/responsive_fontsize'
 import { NavigationProps } from '../../../@types/routes'
 
 import * as S from './styles'
-import Theme from '../../styles/theme'
+import { Text } from '../Typography/styles'
 
-export function GoBackButton() {
-  const { colors } = useTheme()
+type Props = {
+  onPress?: () => void
+}
+
+export function GoBackButton({ onPress }: Props) {
+  const { colors, radii } = useTheme()
   const navigation = useNavigation<NavigationProps>()
 
-  function handleGoBack() { navigation.goBack() }
+  function handlePress() {
+    if(onPress) {
+      onPress()
+    } else {
+      navigation.goBack()
+    }
+  }
 
   return (
     <S.Button
       android_ripple={{
-        color: Theme.colors.yellow4,
-        radius: Theme.radii.xl,
+        color: colors.yellow4,
+        radius: radii.xl,
       }}
-      onPress={handleGoBack}
+      onPress={handlePress}
     >
       <Octicons name="chevron-left" size={RFValue(26)} color={colors.yellow4} />
-      <S.Text>Voltar</S.Text>
+      <Text size='sm' ml='sm'>Voltar</Text>
     </S.Button>
   )
 }

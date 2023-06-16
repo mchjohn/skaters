@@ -2,6 +2,8 @@ import { useTheme } from 'styled-components'
 
 import * as S from './styles'
 
+import { Text } from '../../components/Typography/styles'
+import { Modal } from '../../components/Modal'
 import { useAuth } from '../../contexts/AuthContext'
 import { useModal } from '../../contexts/ModalContext'
 
@@ -15,36 +17,34 @@ export function SuccessRegisterSkater() {
   } = useModal()
 
   return (
-    <S.Modal
+    <Modal
       visible={modalRegisterSkaterSuccessIsVisible}
-      onRequestClose={handleToggleRegisterSkaterSuccessModal}
+      closeModal={handleToggleRegisterSkaterSuccessModal}
     >
-      <S.CenteredView>
-        <S.ModalView>
-          <S.Card>
-            <S.Title>Boa!</S.Title>
+      <S.ModalView>
+        <S.Card>
+          <Text size='xl' my='lg'>Boa!</Text>
 
-            <S.Text>
+          <Text mt='sm'>
               O skatista foi salvo. Nossa equipe agradece.
-            </S.Text>
-            <S.Text>
+          </Text>
+          <Text mt='sm'>
               Vamos analisar e logo estará disponível para todos no app.
-            </S.Text>
-            <S.Text>
+          </Text>
+          <Text mt='sm'>
               TMJ {user?.name} 🛹
-            </S.Text>
+          </Text>
 
-            <S.Button
-              android_ripple={{
-                color: colors.gray9,
-              }}
-              onPress={handleToggleRegisterSkaterSuccessModal}
-            >
-              <S.ButtonText>OK</S.ButtonText>
-            </S.Button>
-          </S.Card>
-        </S.ModalView>
-      </S.CenteredView>
-    </S.Modal>
+          <S.Button
+            android_ripple={{
+              color: colors.gray9,
+            }}
+            onPress={handleToggleRegisterSkaterSuccessModal}
+          >
+            <Text color='gray9' weight='700'>OK</Text>
+          </S.Button>
+        </S.Card>
+      </S.ModalView>
+    </Modal>
   )
 }

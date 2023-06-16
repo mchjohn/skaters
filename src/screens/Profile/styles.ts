@@ -52,36 +52,10 @@ export const InlineView = styled.View`
   padding-horizontal: ${props => props.theme.spacing.xs}px
 `
 
-export const Title = styled.Text`
-  margin-top: ${props => props.theme.spacing.sm}px
-
-  color: ${props => props.theme.colors.yellow4}
-  fontSize: ${props => props.theme.fontSize.lg}px
-  fontWeight: 700
-`
-
-export const Label = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.sm}px
-`
-
-export const TextBold = styled(Label)`
-  fontWeight: 700
-`
-
 export const Footer = styled.Pressable`
   gap: 1px
   flexWrap: wrap
   flexDirection: row
-`
-
-export const Link = styled.Text`
-  color: ${props => props.theme.colors.gray1}
-  fontSize: ${props => props.theme.fontSize.xs}px
-`
-
-export const ScrollView = styled.ScrollView`
-  maxHeight: 110px
 `
 
 export const ListInfo = styled.ScrollView.attrs({
