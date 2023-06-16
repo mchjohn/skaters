@@ -61,8 +61,6 @@ export const Title = styled.Text`
 `
 
 export const Label = styled.Text`
-  margin-bottom: ${props => props.theme.spacing['2xs']}px
-
   color: ${props => props.theme.colors.gray1}
   fontSize: ${props => props.theme.fontSize.sm}px
 `
@@ -84,4 +82,44 @@ export const Link = styled.Text`
 
 export const ScrollView = styled.ScrollView`
   maxHeight: 110px
+`
+
+export const ListInfo = styled.ScrollView.attrs({
+  horizontal: true,
+})`
+  maxHeight: ${props => props.theme.size.md}px
+  margin-bottom: ${props => props.theme.spacing.md}px
+`
+
+export const CardInfo = styled.View`
+  alignItems: center
+  justifyContent: center
+
+  margin-right: ${props => props.theme.spacing.sm}px
+  padding-vertical: ${props => props.theme.spacing.md}px
+  padding-horizontal: 12px
+
+  border-radius: ${props => props.theme.spacing.sm}px
+
+  background-color: ${props => props.theme.colors.gray9}
+`
+
+export const ListSponsors = styled.ScrollView.attrs({
+  horizontal: true
+})`
+  maxHeight: 110px
+`
+
+export const CardSponsor = styled.View`
+  alignItems: center
+  justifyContent: center
+
+  margin-top: ${props => props.theme.spacing.sm}px
+  margin-right: ${props => props.theme.spacing.xs}px
+  padding-vertical: ${props => props.theme.spacing.sm}px
+  padding-horizontal: 12px
+
+  border-radius: ${props => props.theme.spacing.sm}px
+
+  background-color: ${props => props.theme.colors.gray9}
 `

@@ -10,12 +10,11 @@ import { SignUp } from '../SignUp'
 import { Loading } from '../../components/Loading'
 import { FormUpdateSkater } from '../FormUpdateSkater'
 
-import { Info } from './Info'
 import { Avatar } from './Avatar'
 import { useProfile } from './useProfile'
 
 export function Profile() {
-  const { colors } = useTheme()
+  const { colors, fontSize } = useTheme()
   const {
     skater,
     isLiked,
@@ -59,36 +58,54 @@ export function Profile() {
                 </S.Link>
               </S.InlineView>
 
-              <S.InlineView>
-                <S.WrapperText>
-                  <S.Label>Idade:</S.Label>
+              <S.ListInfo>
+                <S.CardInfo>
+                  <S.Label>Idade</S.Label>
                   <S.TextBold>{skater?.age}</S.TextBold>
-                </S.WrapperText>
+                </S.CardInfo>
 
-                <S.WrapperText>
-                  <S.Label>Categoria:</S.Label>
+                <S.CardInfo>
+                  <S.Label>Categoria</S.Label>
                   <S.TextBold>{skater?.level}</S.TextBold>
-                </S.WrapperText>
+                </S.CardInfo>
 
-                <S.WrapperText>
-                  <S.Label>Base:</S.Label>
+                <S.CardInfo>
+                  <S.Label>Base</S.Label>
                   <S.TextBold>{skater?.stance}</S.TextBold>
-                </S.WrapperText>
-              </S.InlineView>
+                </S.CardInfo>
 
-              <S.InlineView style={{ alignItems: 'baseline' }}>
-                <S.WrapperText style={{ maxWidth: '46%' }}>
-                  <S.Label>Patrocínios:</S.Label>
-                  <S.ScrollView>
-                    <S.TextBold>{skater?.sponsors?.join(', ')}</S.TextBold>
-                  </S.ScrollView>
-                </S.WrapperText>
 
-                <S.WrapperText>
-                  <S.Label>Instagram:</S.Label>
+                <S.CardInfo>
+                  <S.Label>Instagram</S.Label>
                   <S.TextBold>{skater?.instagram}</S.TextBold>
-                </S.WrapperText>
-              </S.InlineView>
+                </S.CardInfo>
+              </S.ListInfo>
+
+              <S.WrapperText>
+                <S.Label>Patrocínios:</S.Label>
+                <S.ListSponsors>
+                  {skater?.sponsors.map((brand, index) => {
+                    if (index % 2 === 0) {
+                      return (
+                        <S.CardSponsor key={brand}>
+                          <S.TextBold style={{ fontSize: fontSize.xs }}>{brand}</S.TextBold>
+                        </S.CardSponsor>
+                      )
+                    }
+                  })}
+                </S.ListSponsors>
+                <S.ListSponsors>
+                  {skater?.sponsors.map((brand, index) => {
+                    if (index % 2 !== 0) {
+                      return (
+                        <S.CardSponsor key={brand}>
+                          <S.TextBold style={{ fontSize: fontSize.xs }}>{brand}</S.TextBold>
+                        </S.CardSponsor>
+                      )
+                    }
+                  })}
+                </S.ListSponsors>
+              </S.WrapperText>
             </S.Wrapper>
 
 
