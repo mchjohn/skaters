@@ -1,5 +1,6 @@
 import { useTheme } from 'styled-components'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 import { ActivityIndicator } from 'react-native'
 
 import * as S from './styles'
@@ -14,6 +15,7 @@ type Props = {
 }
 
 export function CardSkater({ data, isLoading }: Props) {
+  const { t } = useTranslation()
   const { colors } = useTheme()
   const navigation = useNavigation<NavigationProps>()
 
@@ -45,7 +47,7 @@ export function CardSkater({ data, isLoading }: Props) {
         <S.Info>
           <Text weight='700'>{data?.name}</Text>
           <Text my='xs' size='sm'>{data?.level} - {data?.address?.country}, {data?.address?.uf}</Text>
-          <Text color='yellow4' size='2xs'>Ver mais...</Text>
+          <Text color='yellow4' size='2xs'>{t('Ver mais')}</Text>
         </S.Info>
       </S.Button>
     </S.WrapperButton>
