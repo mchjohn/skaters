@@ -63,8 +63,8 @@ export function SignIn() {
             onPress={handleSignIn}
           >
             {disableSignInButton ?
-              <Text color='gray9' weight='700'>Preencha todos os campos</Text> :
-              <Text color='gray9' weight='700'>Entrar</Text>
+              <Text color='gray9' weight='700'>{t('Preencha todos os campos')}</Text> :
+              <Text color='gray9' weight='700'>{t('Entrar')}</Text>
             }
           </S.Button>
 
@@ -74,7 +74,7 @@ export function SignIn() {
             }}
             onPress={handleGoToSignUp}
           >
-            <Text>Criar uma conta</Text>
+            <Text>{t('Criar uma conta')}</Text>
           </S.ButtonOutline>
         </S.Form>
       </S.ModalView>

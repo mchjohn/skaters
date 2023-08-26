@@ -46,7 +46,7 @@ export function CardSkater({ data, isLoading }: Props) {
 
         <S.Info>
           <Text weight='700'>{data?.name}</Text>
-          <Text my='xs' size='sm'>{data?.level} - {data?.address?.country}, {data?.address?.uf}</Text>
+          <Text my='xs' size='sm'>{t(data?.level)} - {data?.address?.country}, {data?.address?.uf}</Text>
           <Text color='yellow4' size='2xs'>{t('Ver mais')}</Text>
         </S.Info>
       </S.Button>

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import * as S from './styles'
 
 import { LikeButton } from '../../components/LikeButton'
@@ -13,6 +15,7 @@ import { Avatar } from './Avatar'
 import { useProfile } from './useProfile'
 
 export function Profile() {
+  const { t } = useTranslation()
   const {
     skater,
     isLiked,
@@ -58,17 +61,17 @@ export function Profile() {
 
               <S.ListInfo>
                 <S.CardInfo>
-                  <Text size='sm'>Idade</Text>
+                  <Text size='sm'>{t('Idade')}</Text>
                   <Text weight='700' color='gray1' size='sm'>{skater?.age}</Text>
                 </S.CardInfo>
 
                 <S.CardInfo>
-                  <Text size='sm'>Categoria</Text>
+                  <Text size='sm'>{t('Categoria')}</Text>
                   <Text weight='700' color='gray1' size='sm'>{skater?.level}</Text>
                 </S.CardInfo>
 
                 <S.CardInfo>
-                  <Text size='sm'>Base</Text>
+                  <Text size='sm'>{t('Base')}</Text>
                   <Text weight='700' color='gray1' size='sm'>{skater?.stance}</Text>
                 </S.CardInfo>
 
@@ -79,7 +82,7 @@ export function Profile() {
               </S.ListInfo>
 
               <S.WrapperText>
-                <Text size='sm'>Patrocínios:</Text>
+                <Text size='sm'>{t('Patrocínios')}:</Text>
                 <S.ListSponsors>
                   {skater?.sponsors.map((brand, index) => {
                     if (index % 2 === 0) {
@@ -114,7 +117,7 @@ export function Profile() {
               <Text size='xs'>Enviar atualização.</Text>
             </S.Footer> */}
 
-            <Text size='xs'>Cadastrado por {skater?.creator.name} em {skater?.updatedAt.slice(6)}</Text>
+            <Text size='xs'>{t('Cadastrado por')} {skater?.creator.name} {t('em')} {skater?.updatedAt.slice(6)}</Text>
           </S.Card>
         }
       </S.View>
