@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 import * as S from './styles'
 
@@ -17,6 +18,7 @@ type Props = {
 }
 
 export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) {
+  const { t } = useTranslation()
   const { colors } = useTheme()
 
   const amountLikes = user?.skatersLikes?.length ?? 0
@@ -36,17 +38,17 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
       <GoBackButton onPress={handleToggleModal} />
 
       <S.ModalView>
-        <Text color='yellow4' size='xl' weight='700'>Olá, {user?.name} 🛹</Text>
+        <Text color='yellow4' size='xl' weight='700'>{t('Olá')}, {user?.name} 🛹</Text>
 
         <S.Info>
           <Text mb='xs'>Email: {user?.email}</Text>
         </S.Info>
 
         <Text mb='xs'>
-            Skatistas curtidos: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountLikes}</Text>
+          {t('Skatistas curtidos')}: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountLikes}</Text>
         </Text>
         <Text mb='xs'>
-            Skatistas cadastrados: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountCreated}</Text>
+          {t('Skatistas cadastrados')}: <Text mb='xs' style={{ color: colors.yellow4 }}>{amountCreated}</Text>
         </Text>
       </S.ModalView>
 
@@ -57,7 +59,7 @@ export function ModalUserInfo({ user, modalVisible, handleToggleModal }: Props) 
         }}
         onPress={handleSignOut}
       >
-        <Text>Sair da minha conta</Text>
+        <Text>{t('Sair da minha conta')}</Text>
       </S.Button>
     </Modal>
   )

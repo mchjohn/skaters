@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import Toast from 'react-native-toast-message'
 
 import * as S from './styles'
@@ -10,6 +11,7 @@ import { Input } from '../../components/Input/styles'
 import { GoBackButton } from '../../components/GoBackButton'
 
 export function FormUpdateSkater() {
+  const { t } = useTranslation()
   const { colors } = useTheme()
 
   const {
@@ -34,41 +36,41 @@ export function FormUpdateSkater() {
           <Input
             autoCapitalize='words'
             maxLength={32}
-            placeholder='Nome do skatista'
+            placeholder={t('Nome do skatista')}
             value={formData.name}
             onChangeText={formData.setName}
           />
           <Input
             autoCapitalize='words'
             maxLength={2}
-            placeholder='Idade'
+            placeholder={t('Idade')}
             value={formData.age}
             onChangeText={formData.setAge}
           />
           <Input
             autoCapitalize='words'
             maxLength={22}
-            placeholder='Estado'
+            placeholder={t('Estado')}
             value={formData.state}
             onChangeText={formData.setState}
           />
           <Input
             autoCapitalize='words'
             maxLength={12}
-            placeholder='Nível (Profissional ou Amador)'
+            placeholder={t('Nível (Profissional ou Amador)')}
             value={formData.level}
             onChangeText={formData.setLevel}
           />
           <Input
             autoCapitalize='words'
             maxLength={7}
-            placeholder='Base (Regular ou Goofy)'
+            placeholder={t('Base (Regular ou Goofy)')}
             value={formData.stance}
             onChangeText={formData.setStance}
           />
           <Input
             autoCapitalize='words'
-            placeholder='Patrocínios (separado por virgula)'
+            placeholder={t('Patrocínios (separado por virgula)')}
             value={formData.sponsors}
             onChangeText={formData.setSponsors}
           />
@@ -82,7 +84,7 @@ export function FormUpdateSkater() {
           <Input
             autoCapitalize='words'
             maxLength={7}
-            placeholder='Data das informações'
+            placeholder={t('Data das informações')}
             value={formData.updatedAt}
             onChangeText={formData.setUpdatedAt}
           />
@@ -96,8 +98,8 @@ export function FormUpdateSkater() {
             onPress={handleUpdateSkater}
           >
             {disableUpdateSkaterButton ?
-              <Text color='gray9' weight='700'>Preencha ao menos um campo</Text> :
-              <Text color='gray9' weight='700'>Salvar</Text>
+              <Text color='gray9' weight='700'>{t('Preencha ao menos um campo')}</Text> :
+              <Text color='gray9' weight='700'>{t('Salvar')}</Text>
             }
           </S.Button>
         </S.Form>

@@ -1,6 +1,7 @@
 import { useTheme } from 'styled-components'
 import { Octicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 import { RFValue } from '../../utils/responsive_fontsize'
 import { NavigationProps } from '../../../@types/routes'
@@ -13,6 +14,7 @@ type Props = {
 }
 
 export function GoBackButton({ onPress }: Props) {
+  const { t } = useTranslation()
   const { colors, radii } = useTheme()
   const navigation = useNavigation<NavigationProps>()
 
@@ -33,7 +35,7 @@ export function GoBackButton({ onPress }: Props) {
       onPress={handlePress}
     >
       <Octicons name="chevron-left" size={RFValue(26)} color={colors.yellow4} />
-      <Text size='sm' ml='sm'>Voltar</Text>
+      <Text size='sm' ml='sm'>{t('Voltar')}</Text>
     </S.Button>
   )
 }
