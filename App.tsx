@@ -28,6 +28,8 @@ import { SafeArea } from './src/components/SafeArea'
 import { AuthProvider } from './src/contexts/AuthContext'
 import { ModalProvider } from './src/contexts/ModalContext'
 
+import './src/i18n'
+
 onlineManager.setEventListener(setOnline => {
   return NetInfo.addEventListener(state => {
     setOnline(!!state.isConnected)

@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import Toast from 'react-native-toast-message'
 
 import * as S from './styles'
@@ -12,6 +13,7 @@ import { Loading } from '../../components/Loading'
 import { GoBackButton } from '../../components/GoBackButton'
 
 export function FormRegisterSkater() {
+  const { t } = useTranslation()
   const { colors } = useTheme()
 
   const {
@@ -23,7 +25,7 @@ export function FormRegisterSkater() {
     handleUpdateSkater,
   } = useFormRegisterSkater()
 
-  const textButton = shouldDisableUpdateSkaterButton ? 'Preencha todos os campos' : 'Salvar'
+  const textButton = shouldDisableUpdateSkaterButton ? t('Preencha todos os campos') : t('Salvar')
 
   return (
     <Modal
@@ -33,7 +35,7 @@ export function FormRegisterSkater() {
       <S.ModalView centerContent contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
         <S.Header>
           <Text size='sm' style={{ maxWidth: 220 }}>
-            Preencha todos os campos para cadastrar um skatista no app
+            {t('Preencha todos os campos para cadastrar um skatista no app')}
           </Text>
 
           <GoBackButton onPress={handleToggleFormRegisterSkaterModal} />
@@ -44,14 +46,14 @@ export function FormRegisterSkater() {
             editable={!isLoading}
             maxLength={32}
             autoCapitalize='words'
-            placeholder='Nome do skatista'
+            placeholder={t('Nome do skatista')}
             value={formData.name}
             onChangeText={formData.setName}
           />
           <Input
             editable={!isLoading}
             maxLength={2}
-            placeholder='Idade'
+            placeholder={t('Idade')}
             keyboardType='numeric'
             value={formData.age}
             onChangeText={formData.setAge}
@@ -60,7 +62,7 @@ export function FormRegisterSkater() {
             editable={!isLoading}
             autoCapitalize='words'
             maxLength={22}
-            placeholder='País'
+            placeholder={t('País')}
             value={formData.country}
             onChangeText={formData.setCountry}
           />
@@ -68,7 +70,7 @@ export function FormRegisterSkater() {
             editable={!isLoading}
             autoCapitalize='words'
             maxLength={22}
-            placeholder='Estado'
+            placeholder={t('Estado')}
             value={formData.state}
             onChangeText={formData.setState}
           />
@@ -76,22 +78,22 @@ export function FormRegisterSkater() {
             editable={!isLoading}
             autoCapitalize='characters'
             maxLength={2}
-            placeholder='UF do estado'
+            placeholder={t('UF do estado')}
             value={formData.uf}
             onChangeText={formData.setUf}
           />
 
           <S.WrapperSelect>
             <Select
-              data={['Profissional', 'Amador']}
+              data={[t('Profissional'), t('Amador')]}
               color={formData.level && colors.gray1}
-              defaultButtonText='Categoria'
+              defaultButtonText={t('Category')}
               onSelect={formData.setLevel}
             />
             <Select
               data={['Regular', 'Goofy']}
               color={formData.stance && colors.gray1}
-              defaultButtonText='Base'
+              defaultButtonText={t('Base')}
               onSelect={formData.setStance}
             />
           </S.WrapperSelect>
@@ -99,7 +101,7 @@ export function FormRegisterSkater() {
           <Input
             editable={!isLoading}
             autoCapitalize='words'
-            placeholder='Patrocínios (separado por virgula)'
+            placeholder={t('Patrocínios (separado por virgula)')}
             value={formData.sponsors}
             onChangeText={formData.setSponsors}
           />
@@ -114,7 +116,7 @@ export function FormRegisterSkater() {
           <S.MaskedInput
             editable={!isLoading}
             maxLength={10}
-            placeholder='Data das informações'
+            placeholder={t('Data das informações')}
             keyboardType='numeric'
             type='data'
             mask="99/99/9999"

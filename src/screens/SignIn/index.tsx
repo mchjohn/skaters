@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import Toast from 'react-native-toast-message'
 
 import { useSignIn } from './useSignIn'
@@ -10,6 +11,7 @@ import { Input } from '../../components/Input/styles'
 import { GoBackButton } from '../../components/GoBackButton'
 
 export function SignIn() {
+  const { t } = useTranslation()
   const { colors } = useTheme()
 
   const {
@@ -30,7 +32,7 @@ export function SignIn() {
 
       <S.ModalView>
         <Text mb='xl' size='xl' weight='700' style={{ alignSelf: 'flex-start' }}>
-            Entre com sua conta para continuar 🛹
+          {t('Entre com sua conta para continuar')} 🛹
         </Text>
 
         <S.Form>
@@ -38,7 +40,7 @@ export function SignIn() {
             keyboardType='email-address'
             autoCapitalize='none'
             autoCorrect={false}
-            placeholder='Digite seu e-mail *'
+            placeholder={`${t('Digite seu email')} *`}
             value={formData.email}
             onChangeText={formData.setEmail}
           />
@@ -47,7 +49,7 @@ export function SignIn() {
             secureTextEntry
             autoCorrect={false}
             autoCapitalize='none'
-            placeholder='Digite sua senha *'
+            placeholder={`${t('Digite sua senha')} *`}
             value={formData.password}
             onChangeText={formData.setPassword}
           />
@@ -61,8 +63,8 @@ export function SignIn() {
             onPress={handleSignIn}
           >
             {disableSignInButton ?
-              <Text color='gray9' weight='700'>Preencha todos os campos</Text> :
-              <Text color='gray9' weight='700'>Entrar</Text>
+              <Text color='gray9' weight='700'>{t('Preencha todos os campos')}</Text> :
+              <Text color='gray9' weight='700'>{t('Entrar')}</Text>
             }
           </S.Button>
 
@@ -72,7 +74,7 @@ export function SignIn() {
             }}
             onPress={handleGoToSignUp}
           >
-            <Text>Criar uma conta</Text>
+            <Text>{t('Criar uma conta')}</Text>
           </S.ButtonOutline>
         </S.Form>
       </S.ModalView>
